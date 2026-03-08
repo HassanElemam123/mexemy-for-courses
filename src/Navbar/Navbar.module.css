@@ -1,0 +1,19 @@
+.cursorPointer {
+  cursor: pointer;
+}
+
+.linkColor {
+  color: #102136;
+}
+
+.registerBtn{
+  background-color: #5E3FDE !important;
+  border-color: #5E3FDE !important;
+  color: #fff !important;
+}
+
+.registerBtn:hover{
+  background-color: #4f34c8 !important; 
+  border-color: #4f34c8 !important;
+}
+

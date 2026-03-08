@@ -1,0 +1,146 @@
+.section{
+  background: #fff;
+}
+
+/* badge */
+.badgeSoft{
+  background: #eef2ff !important;
+  color: #4f46e5 !important;
+  padding: 8px 14px;
+  font-weight: 700;
+}
+
+/* circle image */
+.circleWrap{
+  display: grid;
+  place-items: center;
+}
+
+.circle{
+  position: relative;
+  width: min(420px, 95%);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: #f4f4f6;
+  border: 2px solid #e6e6ee;
+  overflow: visible;
+  display: grid;
+  place-items: center;
+}
+
+.circle::after{
+  content:"";
+  position:absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 2px solid #e7e7f2;
+  opacity: .9;
+}
+
+.circleImg{
+  width: 88%;
+  height: 88%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.playBtn{
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.playBtn img {
+  margin-left: 5px;
+}
+
+.liveTag{
+  position: absolute;
+  top: 30px;
+  right: 90px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  box-shadow: 0 10px 25px rgba(0,0,0,.12);
+  transform: rotate(17deg);
+}
+
+.liveTag img{
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+
+.primaryBtn{
+  background: #5E3FDE;
+  color: #fff;
+  border: 1px solid #5E3FDE;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 800;
+  box-shadow: 0 12px 0 rgba(0,0,0,.12);
+}
+.primaryBtn:hover{
+  background: #4f34c8;
+  border-color: #4f34c8;
+  color: #fff;
+}
+
+.statsCard{
+  background: radial-gradient(700px 250px at 20% 30%, #5b19ff 0%, #2a0a6b 55%, #14033c 100%);
+  border-radius: 18px;
+  padding: 50px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hl{
+  background: #ffcc2f;
+  color: #ffffff;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.bigNum{
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.smallTxt{
+  opacity: .85;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vLine{
+  width: 1px;
+  background: rgba(255,255,255,.25);
+}
+
+.people{
+  position: absolute;
+  bottom: 0;
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
+}
+.people img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
