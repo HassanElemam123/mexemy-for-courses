@@ -1,6 +1,20 @@
 import styles from "./Subscripe.module.css";
+import { useState } from "react";
+
 
 export default function Subscripe() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+    if (!email.trim()) return alert("Write your E-mail first");
+    alert(`Subscribed: ${email}`);
+    setEmail("");
+  };
+
+
+
+
   const cards = [
     {
       id: 1,
@@ -28,7 +42,7 @@ export default function Subscripe() {
   return (
     <section className={styles.section}>
       {/* ---------- Subscribe Bar ---------- */}
-      <div className={`container-fluid px-4 ${styles.subscribeWrap}`}>
+      <div className={` ${styles.subscribeWrap}`}>
         <div className={styles.subscribeBar}>
           <div className="row align-items-center g-4">
             <div className="col-lg-3 d-none d-lg-block">
@@ -47,13 +61,16 @@ export default function Subscripe() {
                   New <span>Courses</span> &amp; Study?
                 </h3>
 
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                   <input
                     className={styles.input}
                     type="email"
                     placeholder="Type Your E-Mail"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
-                  <button className={styles.subBtn} type="button">
+                  <button className={` ${styles.subBtn}`} type="submit">
                     Subscribe Now
                   </button>
                 </form>

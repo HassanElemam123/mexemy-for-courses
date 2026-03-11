@@ -1,0 +1,126 @@
+.footer{
+  width: 100%;
+}
+
+/* الجزء البنفسجي */
+.top{
+  padding: 60px 0;
+  background: radial-gradient(1200px 650px at 20% 30%,
+    #5b19ff 0%,
+    #2a0a6b 45%,
+    #14033c 100%);
+  color: #fff;
+}
+
+
+
+/* quote block */
+.quote{
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.quoteLine{
+  width: 4px;
+  min-height: 62px;
+  border-radius: 20px;
+  background: #7456F1;
+  margin-top: 4px;
+  box-shadow:
+    0 0 18px rgba(116, 86, 241, 0.55),
+    0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.quoteText{
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: .95;
+  max-width: 320px;
+}
+
+.quoteAuthor{
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: .8;
+}
+
+/* links */
+.linksCol{
+  text-align: center;
+}
+
+.linksTitle{
+  font-size:20px;
+  opacity: .85;
+  font-weight: bold;
+  padding: 5px;
+  background-color: #FFC224;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  color:#161439;
+}
+
+.links{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.links a{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  transition: 0.4s;
+}
+
+.links a:hover{
+  color: #FFC224;
+}
+
+/* payments */
+.paymentsWrap{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentsImg{
+  width: 450px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  opacity: .95;
+}
+
+/* الشريط الأبيض */
+.bottom{
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,.06);
+  padding: 14px 0;
+}
+
+.copy{
+  color: #161439;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.social{
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+
+
+/* responsive */
+@media (max-width: 992px){
+  .linksCol{ text-align: left; }
+  .paymentsWrap{ justify-content: flex-start; }
+}

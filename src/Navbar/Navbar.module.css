@@ -10,6 +10,7 @@
   background-color: #5E3FDE !important;
   border-color: #5E3FDE !important;
   color: #fff !important;
+  transition: 0.3s;
 }
 
 .registerBtn:hover{

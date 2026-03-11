@@ -10,9 +10,14 @@
 .subscribeBar{
   position: relative;
   background: radial-gradient(1200px 600px at 20% 30%, #5b19ff 0%, #2a0a6b 45%, #14033c 100%);
-  border-radius: 18px;
+  width: 100%;
   padding: 26px 26px;
   overflow: hidden;
+}
+
+.subscribeBar .row{
+  position: relative;
+  z-index: 2;
 }
 
 .heroImg{
@@ -99,7 +104,16 @@
   padding: 10px 16px;
   border-radius: 999px;
   white-space: nowrap;
+  transition: transform .15s ease, box-shadow .15s ease;
+  cursor: pointer;
+  color: #161439;
+  transition: 0.2s;
 }
+.subBtn:hover {
+  opacity: 0.8;
+}
+
+
 
 .line1, .line2{
   position:absolute;
@@ -112,12 +126,16 @@
   height: 380px;
   right: -160px;
   top: -120px;
+  z-index: 1;
+  pointer-events: none;
 }
 .line2{
   width: 520px;
   height: 520px;
   right: -260px;
   top: -220px;
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* ---------- Events ---------- */

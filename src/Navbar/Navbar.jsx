@@ -28,13 +28,13 @@ export default function Navbar() {
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
             <li className="nav-item">
               <NavLink className={`nav-link fw-bold ${styles.linkColor}`} to="/">
-                Dashboard
+                Home
               </NavLink>
             </li>
 
             <li className="nav-item">
-                  <NavLink className={`nav-link fw-bold ${styles.linkColor}`} to="/courses">
-                    All Courses
+              <NavLink className={`nav-link fw-bold ${styles.linkColor}`} to="/courses">
+                All Courses
               </NavLink>
             </li>
 

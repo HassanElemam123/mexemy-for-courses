@@ -1,0 +1,235 @@
+/* ===== Blogs Section ===== */
+.section{
+  padding: 80px 0 90px;
+  background: radial-gradient(1200px 700px at 20% 30%, #5b19ff 0%, #2a0a6b 45%, #14033c 100%);
+  color: #fff;
+}
+
+.pill{
+  background: #eef2ff !important;
+  color: #4f46e5 !important;
+  padding: 8px 14px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.h2{
+  margin: 14px 0 8px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  font-size: clamp(22px, 2.3vw, 34px);
+}
+
+.sub{
+  margin: 0 auto;
+  max-width: 520px;
+  opacity: .75;
+  font-size: 12px;
+}
+
+/* ===== Blog Card ===== */
+.card{
+  background: #fff;
+  border: 1px solid #ececf3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.imgWrap{
+  position: relative;
+  padding: 12px 12px 0;
+}
+
+.imgWrap img{
+  width: 100%;
+  height: 190px;        /* ثبّت الصورة */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.tag{
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  background: #5E3FDE;
+  color: #fff;
+  font-weight: 800;
+  font-size: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+}
+
+.body{
+  padding: 14px 16px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6d6c80;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.metaItem{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.icon img{
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.metaDot{
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(22,20,57,.25);
+}
+
+.title{
+  margin: 0;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+  min-height: 36px;
+  color: #161439;
+
+  /* تثبيت سطرين */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== CTA Section ===== */
+.ctaSection{
+  background: #f5f6fa;
+  padding: 40px 0 60px;
+}
+
+.ctaCard{
+  background: #fff;
+  border: 1px solid #e8e8f2;
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.08);
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ✅ صف ثابت يخلي الصورة تنزل لتحت */
+.ctaRow{
+  display: flex;
+  align-items: flex-end;  /* ينزل الصورة لآخر الكارت */
+  gap: 16px;
+}
+
+/* ✅ الصورة */
+.ctaImgWrap{
+  position: relative;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+/* ✅ الشكل الأصفر ورا الصورة (زي الفيجما) */
+.yellowLeft::before{
+  content:"";
+  position: absolute;
+  left: -18px;
+  bottom: 0;
+  width: 180px;
+  height: 120px;
+  background: #ffcc2f;
+  border-radius: 999px;
+  transform: rotate(-12deg); /* ✅ ميل */
+  z-index: 0;
+}
+
+/* الصورة فوق الشكل */
+.ctaImgWrap img{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.ctaContent{
+  flex: 1;
+}
+
+.ctaTitle{
+  margin: 0 0 6px;
+  font-weight: 900;
+  color: #161439;
+  font-size: 18px;
+}
+
+.ctaText{
+  margin: 0 0 12px;
+  color: #6d6c80;
+  font-size: 12px;
+  line-height: 1.6;
+  max-width: 360px;
+}
+
+.primaryBtn{
+  background: #5E3FDE;
+  color: #fff;
+  border: 1px solid #5E3FDE;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 800;
+  box-shadow: 0 12px 0 rgba(0,0,0,.12);
+}
+.primaryBtn:hover{
+  background: #4f34c8;
+  border-color: #4f34c8;
+  color: #fff;
+}
+
+.ctaArrow{
+  margin-left: 10px;
+}
+
+/* موبايل */
+@media (max-width: 576px){
+  .ctaCard{
+    padding: 16px;
+  }
+
+  .ctaRow{
+    align-items: center;
+  }
+
+  .ctaImgWrap{
+    width: 120px;
+    height: 110px;
+  }
+
+  .yellowLeft::before{
+    width: 85px;
+    height: 85px;
+    left: -10px;
+  }
+}
