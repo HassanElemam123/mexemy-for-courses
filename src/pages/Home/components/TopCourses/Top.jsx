@@ -152,9 +152,9 @@ export default function Top() {
                 </div>
 
                 <div className={styles.footer}>
-                  <span className={styles.fItem}><img src="/public/icons/lesson → Item.svg" alt="" /> {c.lessons}</span>
-                  <span className={styles.fItem}><img src="/public/icons/clock → Item.svg" alt="" /> {c.duration}</span>
-                  <span className={styles.fItem}><img src="/public/icons/graduation → Item.svg" alt="" /> {c.students}</span>
+                  <span className={styles.fItem}><img src="/icons/lesson → Item.svg" alt="" /> {c.lessons}</span>
+                  <span className={styles.fItem}><img src="/icons/clock → Item.svg" alt="" /> {c.duration}</span>
+                  <span className={styles.fItem}><img src="/icons/graduation → Item.svg" alt="" /> {c.students}</span>
                 </div>
               </div>
             </article>

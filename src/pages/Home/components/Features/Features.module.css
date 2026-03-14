@@ -189,7 +189,8 @@
 .bullet {
   width: 26px;
   height: 26px;
-  border-radius: 999px;
+  border: 1px solid #161439;
+  border-radius: 50%;
   background:  #FFC738;
   display: grid;
   place-items: center;

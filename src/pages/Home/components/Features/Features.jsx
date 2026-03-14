@@ -78,7 +78,7 @@ export default function Features() {
           <div className="col-12 col-lg-6 d-flex justify-content-center">
             <div className={styles.leftVisual}>
               <img
-                src="/public/Section-person.png"
+                src="/Section-person.png"
                 alt="About visual"
                 className={styles.leftImg}
               />
@@ -104,15 +104,21 @@ export default function Features() {
 
             <ul className="list-unstyled mb-4">
               <li className={`${styles.listItem} d-flex align-items-center gap-2 mb-2`}>
-                <span className={styles.bullet}>›</span>
+                <span className={styles.bullet}>
+                  <img src="/icons/listing-arrow.svg" alt="" />
+                </span>
                 <span className="fw-semibold">The Most World Class Instructors</span>
               </li>
               <li className={`${styles.listItem} d-flex align-items-center gap-2 mb-2`}>
-                <span className={styles.bullet}>›</span>
+                <span className={styles.bullet}>
+                  <img src="/icons/listing-arrow.svg" alt="" />
+                </span>
                 <span className="fw-semibold">Access Your Class anywhere</span>
               </li>
               <li className={`${styles.listItem} d-flex align-items-center gap-2`}>
-                <span className={styles.bullet}>›</span>
+                <span className={styles.bullet}>
+                  <img src="/icons/listing-arrow.svg" alt="" />
+                </span>
                 <span className="fw-semibold">Flexible Course Plan</span>
               </li>
             </ul>

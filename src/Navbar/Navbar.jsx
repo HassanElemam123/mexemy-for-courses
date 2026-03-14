@@ -70,7 +70,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg fixed-top bg-white shadow-sm py-2">
       <div className="container-fluid px-4">
         <img
-          src="../../public/icons/nav-logo.svg"
+          src="/icons/nav-logo.svg"
           alt="mexemy"
           className={styles.navbarLogo}
         />
@@ -219,7 +219,7 @@ export default function Navbar() {
 
                 <button type="submit" className={styles.searchBtn}>
                   <img
-                    src="../../public/icons/search.svg"
+                    src="/icons/search.svg"
                     className={styles.cursorPointer}
                     alt="Search"
                   />
@@ -250,7 +250,7 @@ export default function Navbar() {
               <div className={styles.cartWrapper}>
                 <NavLink to="/cart">
                   <img
-                    src="../../public/icons/cart.svg"
+                    src="/icons/cart.svg"
                     className={`p-1 ${styles.cursorPointer}`}
                     alt="Cart"
                   />
@@ -260,7 +260,7 @@ export default function Navbar() {
               </div>
 
               <img
-                src="../../public/icons/login.svg"
+                src="/icons/login.svg"
                 className={`p-1 ${styles.cursorPointer}`}
                 alt="Profile"
               />
