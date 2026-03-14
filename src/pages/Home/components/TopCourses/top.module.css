@@ -295,3 +295,7 @@
   border-color: #4f34c8;
   color: #fff;
 }
+
+.linkReset {
+  text-decoration: none;
+}

@@ -131,13 +131,13 @@ export default function Footer() {
             <div className={styles.copy}>Copyright © 2024 @mexemy.com</div>
 
             <div className={styles.social}>
-              <a className={styles.socialBtn} href="#" aria-label="Facebook">
+              <a className={styles.socialBtn} href="https://web.facebook.com/mexemy.bd" target="_blank" aria-label="Facebook">
                 <img src="/icons/Link-Facebook→SVG.svg" alt="" />
               </a>
-              <a className={styles.socialBtn} href="#" aria-label="Instagram">
+              <a className={styles.socialBtn} href="http://instagram.com/mexemy.official/" target="_blank" aria-label="Instagram">
                 <img src="/icons/Link-Instagram→SVG.svg" alt="" />
               </a>
-              <a className={styles.socialBtn} href="#" aria-label="YouTube">
+              <a className={styles.socialBtn} href="https://www.youtube.com/@mexemyclasses"  target="_blank" aria-label="YouTube">
                 <img src="/icons/Link-YouTube→SVG.svg" alt="" />
               </a>
             </div>

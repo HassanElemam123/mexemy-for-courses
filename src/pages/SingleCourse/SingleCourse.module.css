@@ -1,0 +1,221 @@
+.page {
+  background: #eef2ff;
+  min-height: 100vh;
+  padding-top: 90px;
+  padding-bottom: 50px;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.imageCard,
+.contentCard,
+.infoCard {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 14px 30px rgba(17, 24, 39, 0.06);
+  border: 1px solid rgba(22, 20, 57, 0.08);
+}
+
+.imageCard {
+  overflow: hidden;
+}
+
+.imageCard img {
+  width: 100%;
+  display: block;
+}
+
+.contentCard {
+  padding: 28px;
+}
+
+.badge {
+  display: inline-block;
+  background: #5e3fde;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 900;
+  color: #161439;
+  margin-bottom: 14px;
+}
+
+.description {
+  font-size: 15px;
+  color: #445;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.cartBtn,
+.removeBtn,
+.backBtn {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primaryBtn {
+  background: #ffcc2f;
+  color: #111;
+}
+
+.primaryBtn:hover {
+  background: #e9b913;
+}
+
+.cartBtn {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+.cartBtn:hover {
+  background: #f3f4f7;
+}
+
+.removeBtn {
+  background: #dc2626;
+  color: #fff;
+}
+
+.removeBtn:hover {
+  background: #f53535;
+}
+
+.infoSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.infoCard {
+  padding: 24px;
+}
+
+.infoCard h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #161439;
+  margin-bottom: 16px;
+}
+
+.infoCard p,
+.infoCard li {
+  color: #374151;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.infoCard ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.notFound {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: #eef2ff;
+}
+
+.backBtn {
+  background: #5e3fde;
+  color: #fff;
+  margin-top: 12px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  padding: 18px;
+}
+
+.modalCard {
+  width: min(920px, 100%);
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,.35);
+}
+
+.modalTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.modalTitle {
+  font-weight: 900;
+  color: #161439;
+  font-size: 14px;
+}
+
+.modalClose {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  color: #161439;
+}
+
+.iframeWrap {
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.iframeWrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 992px) {
+  .topSection,
+  .infoSection {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+}

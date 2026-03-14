@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
 import styles from "./top.module.css";
+import { NavLink } from "react-router-dom";
+
 
 const data = [
   {
@@ -160,9 +162,11 @@ export default function Top() {
         </div>
 
         <div className={styles.ctaWrap}>
-          <button className={`btn ${styles.primaryBtn}`}type="button">
-            See All Courses <span className={styles.ctaArrow}>→</span>
-          </button>
+          <NavLink to="/courses" className={styles.linkReset}>
+            <button className={`btn ${styles.primaryBtn}`} type="button">
+              See All Courses <span className={styles.ctaArrow}>→</span>
+            </button>
+          </NavLink>
         </div>
       </div>
     </section>
