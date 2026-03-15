@@ -134,13 +134,13 @@ export default function About() {
               </ul>
 
               <div className={styles.contactSocial}>
-                <a className={styles.socialBtn} href="#" aria-label="facebook">
+                <a className={styles.socialBtn} href="https://web.facebook.com/mexemy.bd" target="_blank" aria-label="facebook">
                   <img src="/icons/f-about.svg" alt="" />
                 </a>
-                <a className={styles.socialBtn} href="#" aria-label="youtube">
+                <a className={styles.socialBtn} href="https://www.youtube.com/@mexemyclasses" target="_blank" aria-label="youtube">
                   <img src="/icons/y-about.svg" alt="" />
                 </a>
-                <a className={styles.socialBtn} href="#" aria-label="instagram">
+                <a className={styles.socialBtn} href="http://instagram.com/mexemy.official/" target="_blank" aria-label="instagram">
                   <img src="/icons/in-about.svg" alt="" />
                 </a>
               </div>
