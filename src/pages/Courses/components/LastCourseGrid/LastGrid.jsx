@@ -8,7 +8,7 @@ const latestCourse = {
   title: "Video Editing\nand Storytelling",
   cta: "Enroll Now",
   img: "/video-editing.png",
-  video: "https://www.youtube.com/embed/q4OWKoUUjdY",
+  video: "https://www.youtube.com/embed/5gzWSz6xmwM?si=EZQdrzboOI6ickP6",
 };
 
 const middleHero = {

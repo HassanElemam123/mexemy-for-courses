@@ -9,7 +9,7 @@ const fallbackCourses = {
     title: "Web Design",
     img: "/Wordpress-web-design-and-ecommerce-course-update-3.0.webp.png",
     video: "https://www.youtube.com/embed/rIPOJG3F3Vg",
-    instructor: "Ahmed Hassan",
+    instructor: "Ahmed Hassan & Olivia Mia",
     duration: "18 Hours",
     level: "Beginner",
     lessons: 24,

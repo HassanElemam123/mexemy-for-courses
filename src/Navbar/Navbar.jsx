@@ -155,14 +155,14 @@ export default function Navbar() {
 
             <li className="nav-item">
               <NavLink
-                to="/contact"
+                to="/about"
                 className={({ isActive }) =>
                   `nav-link fw-bold ${styles.linkColor} ${
                     isActive ? styles.activeLink : ""
                   }`
                 }
               >
-                Contact
+                About Us
               </NavLink>
             </li>
 

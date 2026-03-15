@@ -17,6 +17,7 @@ import ScrollToTop from "./ScrollToTop.jsx";
 import { CartProvider } from "./CartContext.jsx";
 import "./index.css";
 import SingleCourse from "./pages/SingleCourse/SingleCourse.jsx";
+import About from "./pages/About/About.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: "/courses", element: <Courses /> },
       { path: "/cart", element: <Cart /> },
       { path: "/course/:id", element: <SingleCourse /> },
+      { path: "/about", element: <About /> },
     ],
   },
 ]);

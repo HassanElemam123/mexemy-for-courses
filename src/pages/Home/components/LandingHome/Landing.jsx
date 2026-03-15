@@ -1,4 +1,5 @@
 import styles from "./Landing.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function LandingHome() {
   return (
@@ -16,14 +17,16 @@ export default function LandingHome() {
             </h1>
 
             <div className="d-flex align-items-center gap-3 mt-4 flex-wrap">
-              <button className={`btn ${styles.primaryBtn}`}>
-                Start Free Trial <span className="ms-2">→</span>
-              </button>
 
+                <button className={`btn ${styles.primaryBtn}`}>
+                  Start Free Trial <span className="ms-2">→</span>
+                </button>
+
+            <NavLink to="/courses">
               <button className={`btn ${styles.playBtn}`} aria-label="Play">
                 <img src="/icons/Symbol.svg" alt="play" className={styles.playIcon} />
               </button>
-
+            </NavLink> 
               <div className={styles.watchText}>
                 Watch Our <br /> New Courses
               </div>

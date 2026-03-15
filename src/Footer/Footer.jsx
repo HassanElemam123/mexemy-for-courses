@@ -43,34 +43,12 @@ export default function Footer() {
 
                   <li>
                     <NavLink
-                      to="/contact"
+                      to="/"
                       className={({ isActive }) =>
                         `${styles.footerLink} ${isActive ? styles.activeLink : ""}`
                       }
                     >
-                      Contact
-                    </NavLink>
-                  </li>
-
-                  <li>
-                    <NavLink
-                      to="/privacy"
-                      className={({ isActive }) =>
-                        `${styles.footerLink} ${isActive ? styles.activeLink : ""}`
-                      }
-                    >
-                      Privacy Policy
-                    </NavLink>
-                  </li>
-
-                  <li>
-                    <NavLink
-                      to="/refund"
-                      className={({ isActive }) =>
-                        `${styles.footerLink} ${isActive ? styles.activeLink : ""}`
-                      }
-                    >
-                      Refund and Returns Policy
+                      Home
                     </NavLink>
                   </li>
 
@@ -96,16 +74,6 @@ export default function Footer() {
                     </NavLink>
                   </li>
 
-                  <li>
-                    <NavLink
-                      to="/terms"
-                      className={({ isActive }) =>
-                        `${styles.footerLink} ${isActive ? styles.activeLink : ""}`
-                      }
-                    >
-                      Terms and condition
-                    </NavLink>
-                  </li>
                 </ul>
               </div>
             </div>
