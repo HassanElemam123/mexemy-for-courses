@@ -50,7 +50,7 @@ export default function About() {
           <div className={styles.textBlock}>
             <p>
               To combat unemployment in Bangladesh&apos;s youth society and introduce a new
-              education system, Maxmi has embarked on a journey. In the present era, where
+              education system, Mexemy has embarked on a journey. In the present era, where
               skills are given more importance than textbook knowledge and certificates,
               we are lagging far behind compared to other countries. One of the main reasons
               is the lack of proper guidelines and resources. As a solution, we have brought
@@ -66,12 +66,12 @@ export default function About() {
 
             <p className={styles.bold}>
               To develop your skills, excel in your career, and simultaneously contribute to
-              creating a new skilled youth society, join hands with Maxmi today.
+              creating a new skilled youth society, join hands with Mexemy today.
             </p>
           </div>
 
           <h2 className={styles.midTitle}>
-            Maxmi could be your choice as a learning platform.
+            Mexemy could be your choice as a learning platform.
           </h2>
 
           <div className="row g-4 mt-2">
