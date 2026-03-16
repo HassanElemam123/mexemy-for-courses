@@ -1,0 +1,155 @@
+.page {
+  background: #f5f6fa;
+  min-height: 100vh;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(
+    1200px 650px at 20% 30%,
+    #5b19ff 0%,
+    #2a0a6b 45%,
+    #14033c 100%
+  );
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/Section-back.png");
+  background-size: contain;
+  background-position: center;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.headingWrap {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.smallBadge {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.heroTitle {
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(28px, 3vw, 48px);
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.formCard {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid #ececf3;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #161439;
+  margin-bottom: 6px;
+}
+
+.input {
+  height: 38px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #161439;
+}
+
+.textarea {
+  border-radius: 4px;
+  font-size: 12px;
+  color: #161439;
+  resize: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #9ca3af;
+}
+
+.checkRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.checkLabel {
+  font-size: 12px;
+  color: #6d6c80;
+  line-height: 1.5;
+}
+
+.termsLink {
+  color: #6c4df6;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.termsLink:hover {
+  text-decoration: underline;
+}
+
+.agreeError {
+  font-size: 12px;
+  color: #dc3545;
+  margin-top: -6px;
+  margin-bottom: 12px;
+}
+
+.submitBtn {
+  width: 100%;
+  background: #6c4df6;
+  border: 1px solid #6c4df6;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 4px;
+  height: 38px;
+  padding: 0 22px;
+  transition: 0.2s ease;
+}
+
+.submitBtn:hover {
+  background: #5a3fe0;
+  border-color: #5a3fe0;
+  color: #fff;
+}
+
+.submitBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: #6c4df6;
+  border-color: #6c4df6;
+  color: #fff;
+}
+
+@media (max-width: 576px) {
+  .heroTitle {
+    font-size: 24px;
+  }
+
+  .formCard {
+    padding: 14px;
+  }
+}

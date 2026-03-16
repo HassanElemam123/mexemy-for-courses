@@ -70,7 +70,7 @@ export default function Footer() {
                         `${styles.footerLink} ${isActive ? styles.activeLink : ""}`
                       }
                     >
-                      faq
+                      FAQ
                     </NavLink>
                   </li>
 

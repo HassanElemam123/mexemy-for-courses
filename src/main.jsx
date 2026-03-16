@@ -18,6 +18,13 @@ import { CartProvider } from "./CartContext.jsx";
 import "./index.css";
 import SingleCourse from "./pages/SingleCourse/SingleCourse.jsx";
 import About from "./pages/About/About.jsx";
+import Register from "./pages/Register/Register.jsx";
+import Terms from "./pages/Terms/Terms.jsx";
+import AffRegister from "./pages/AffRegister/AffRegister.jsx";
+import AfLogin from "./pages/AfLogin/AfLogin.jsx";
+import LostPassword from "./pages/LostPassword/LostPassword.jsx";
+import Faq from "./pages/Faq/Faq.jsx";
+import Events from "./pages/Events/Events.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -40,6 +47,13 @@ const router = createBrowserRouter([
       { path: "/cart", element: <Cart /> },
       { path: "/course/:id", element: <SingleCourse /> },
       { path: "/about", element: <About /> },
+      { path: "/register", element: <Register /> },
+      { path: "/terms", element: <Terms /> },
+      { path: "/affiliate/join", element: <AffRegister /> },
+      { path: "/affiliate/login", element: <AfLogin /> },
+      { path: "/forgot-password", element: <LostPassword /> },
+      { path: "/faq", element: <Faq /> },
+      { path: "/events", element: <Events /> },
     ],
   },
 ]);

@@ -73,11 +73,11 @@
 }
 
 .form{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   gap: 10px;
-  background: rgba(34, 34, 135, 0.548);
-  border: 1px solid rgba(34, 34, 135, 0.548);
+  background: transparent;   /* بدل أي لون */
+  border: 1px solid rgba(255,255,255,.18); /* اختياري */
   border-radius: 999px;
   padding: 8px;
   min-width: min(520px, 100%);
@@ -94,6 +94,16 @@
 }
 .input::placeholder{
   color: rgba(255,255,255,.65);
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #fff;
 }
 
 .subBtn{

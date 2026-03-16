@@ -1,4 +1,6 @@
 import styles from "./Blogs.module.css";
+import { NavLink } from "react-router-dom";
+
 
 export default function Blogs() {
   const blogs = [
@@ -106,9 +108,12 @@ export default function Blogs() {
                       exercise yes is this happen here.
                     </p>
 
-                    <button className={`btn ${styles.ctaBtn} ${styles.primaryBtn}`}>
-                      Apply Now <span className={styles.ctaArrow}>→</span>
-                    </button>
+                    <NavLink to="/affiliate/join" className={`btn ${styles.ctaBtn} ${styles.primaryBtn}`}>
+                      Apply Now
+                      <span className={styles.ctaArrow}>
+                        <img src="/icons/btn-arrow.svg" alt="" />
+                      </span>
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -130,9 +135,12 @@ export default function Blogs() {
                       together. Online learning.
                     </p>
 
-                    <button className={`btn ${styles.ctaBtn} ${styles.primaryBtn}`}>
-                      Apply Now <span className={styles.ctaArrow}>→</span>
-                    </button>
+                    <NavLink to="/register" className={`btn ${styles.ctaBtn} ${styles.primaryBtn}`}>
+                      Apply Now
+                      <span className={styles.ctaArrow}>
+                        <img src="/icons/btn-arrow.svg" alt="" />
+                      </span>
+                    </NavLink>
                   </div>
                 </div>
               </div>

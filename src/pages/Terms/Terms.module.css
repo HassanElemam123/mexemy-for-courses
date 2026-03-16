@@ -1,0 +1,151 @@
+.page {
+  background: #f8f9fc;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 42svh;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(
+    1200px 650px at 20% 30%,
+    #5b19ff 0%,
+    #2a0a6b 45%,
+    #14033c 100%
+  );
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/Section-back.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.heroInner {
+  min-height: 42svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 30px 0;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.heroTitle {
+  margin: 0;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+  font-size: clamp(32px, 4.5vw, 58px);
+  line-height: 1.05;
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.heroText {
+  margin: 0;
+  max-width: 640px;
+  font-size: 13px;
+  line-height: 1.8;
+  opacity: 0.92;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding: 60px 0 80px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(22, 20, 57, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
+  padding: 24px;
+}
+
+.topNote {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #f3f0ff;
+  color: #5e3fde;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.intro {
+  margin: 0 0 24px;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.sectionsWrap {
+  display: grid;
+  gap: 18px;
+}
+
+.termBlock {
+  padding: 18px;
+  border: 1px solid #ececf3;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.termTitle {
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #161439;
+}
+
+.termText {
+  margin: 0;
+  color: #6d6c80;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.bottomNote {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #f8f9fc;
+  color: #161439;
+  font-size: 13px;
+  font-weight: 700;
+  border-left: 4px solid #5e3fde;
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 16px;
+  }
+
+  .termBlock {
+    padding: 14px;
+  }
+
+  .heroText {
+    font-size: 12px;
+  }
+}

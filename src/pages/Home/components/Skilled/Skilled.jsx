@@ -77,7 +77,9 @@ export default function Skilled() {
               type="button"
               onClick={goToWebDesignCourse}
             >
-              Join My Class <span className={styles.arrow}>→</span>
+              Join My Class <span className={styles.arrow}>
+                <img src="/icons/btn-arrow.svg" alt="" />
+              </span>
             </button>
           </div>
         </div>

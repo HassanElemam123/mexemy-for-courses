@@ -1,4 +1,5 @@
 import styles from "./Features.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function Features() {
   return (
@@ -123,11 +124,14 @@ export default function Features() {
               </li>
             </ul>
 
-          <button className={`btn ${styles.primaryBtn}`} type="button">
-              Start Free Trial <span className="ms-2">→</span>
-            </button>
-          </div>
+          <NavLink to="/register" className={`btn ${styles.primaryBtn}`}>
+            Start Free Trial
+            <span className="ms-2">
+              <img src="/icons/btn-arrow.svg" alt="" />
+            </span>
+          </NavLink>
         </div>
+      </div>
 
       </div>
     </section>

@@ -18,9 +18,12 @@ export default function LandingHome() {
 
             <div className="d-flex align-items-center gap-3 mt-4 flex-wrap">
 
-                <button className={`btn ${styles.primaryBtn}`}>
-                  Start Free Trial <span className="ms-2">→</span>
-                </button>
+                <NavLink to="/register" className={`btn ${styles.primaryBtn}`}>
+                  Start Free Trial
+                  <span className="ms-2">
+                    <img src="/icons/btn-arrow.svg" alt="" />
+                  </span>
+                </NavLink>
 
             <NavLink to="/courses">
               <button className={`btn ${styles.playBtn}`} aria-label="Play">

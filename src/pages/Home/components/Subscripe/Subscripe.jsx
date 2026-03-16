@@ -1,19 +1,19 @@
 import styles from "./Subscripe.module.css";
 import { useState } from "react";
-
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Subscripe() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    if (!email.trim()) return alert("Write your E-mail first");
-    alert(`Subscribed: ${email}`);
+    e.preventDefault();
+
+    if (!email.trim()) return;
+
+    navigate(`/register?email=${encodeURIComponent(email)}`);
     setEmail("");
   };
-
-
-
 
   const cards = [
     {
@@ -42,7 +42,7 @@ export default function Subscripe() {
   return (
     <section className={styles.section}>
       {/* ---------- Subscribe Bar ---------- */}
-      <div className={` ${styles.subscribeWrap}`}>
+      <div className={styles.subscribeWrap}>
         <div className={styles.subscribeBar}>
           <div className="row align-items-center g-4">
             <div className="col-lg-3 d-none d-lg-block">
@@ -70,7 +70,7 @@ export default function Subscripe() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <button className={` ${styles.subBtn}`} type="submit">
+                  <button className={styles.subBtn} type="submit">
                     Subscribe Now
                   </button>
                 </form>
@@ -99,9 +99,12 @@ export default function Subscripe() {
               make a type specimen books centuries.
             </p>
 
-            <button className={`btn ${styles.primaryBtn}`}>
-              See All Events <span className={styles.arrow}>→</span>
-            </button>
+            <NavLink to="/events" className={`btn ${styles.primaryBtn}`}>
+              See All Events
+              <span className={styles.arrow}>
+                <img src="/icons/btn-arrow.svg" alt="" />
+              </span>
+            </NavLink>
           </div>
 
           {/* Right cards */}
@@ -129,7 +132,6 @@ export default function Subscripe() {
                   </div>
                 ))}
               </div>
-
             </div>
           </div>
         </div>

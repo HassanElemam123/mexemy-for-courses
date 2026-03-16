@@ -1,4 +1,6 @@
 import styles from "./Workshop.module.css";
+import { NavLink } from "react-router-dom";
+
 
 export default function Workshop() {
   return (
@@ -67,9 +69,12 @@ export default function Workshop() {
               </div>
             </div>
 
-            <button className={`btn ${styles.primaryBtn}`} type="button">
-              Quick Join Now <span className="ms-2">→</span>
-            </button>
+            <NavLink to="/register" className={`btn ${styles.primaryBtn}`}>
+              Quick Join Now
+              <span className="ms-2">
+                <img src="/icons/btn-arrow.svg" alt="" />
+              </span>
+            </NavLink>
           </div>
         </div>
 

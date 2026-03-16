@@ -164,7 +164,9 @@ export default function Top() {
         <div className={styles.ctaWrap}>
           <NavLink to="/courses" className={styles.linkReset}>
             <button className={`btn ${styles.primaryBtn}`} type="button">
-              See All Courses <span className={styles.ctaArrow}>→</span>
+              See All Courses <span className={styles.ctaArrow}>
+                <img src="/icons/btn-arrow.svg" alt="" />
+              </span>
             </button>
           </NavLink>
         </div>

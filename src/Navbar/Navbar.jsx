@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import styles from "./Navbar.module.css";
 import { useCart } from "../CartContext.jsx";
 
@@ -25,6 +25,13 @@ export default function Navbar() {
   const [searchText, setSearchText] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
+  const navCollapseRef = useRef(null);
+
+  const closeMobileMenu = () => {
+    if (window.innerWidth < 992 && navCollapseRef.current) {
+      navCollapseRef.current.classList.remove("show");
+    }
+  };
 
   const filteredCourses = useMemo(() => {
     const value = searchText.trim().toLowerCase();
@@ -58,12 +65,15 @@ export default function Navbar() {
       navigate("/courses");
       setShowSuggestions(false);
     }
+
+    closeMobileMenu();
   };
 
   const handleSuggestionClick = (title) => {
     setSearchText(title);
     setShowSuggestions(false);
     navigate(`/courses?search=${encodeURIComponent(title)}`);
+    closeMobileMenu();
   };
 
   return (
@@ -87,11 +97,16 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="mainNav">
+        <div
+          className="collapse navbar-collapse"
+          id="mainNav"
+          ref={navCollapseRef}
+        >
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
             <li className="nav-item">
               <NavLink
                 to="/"
+                onClick={closeMobileMenu}
                 className={({ isActive }) =>
                   `nav-link fw-bold ${styles.linkColor} ${
                     isActive ? styles.activeLink : ""
@@ -105,6 +120,7 @@ export default function Navbar() {
             <li className="nav-item">
               <NavLink
                 to="/courses"
+                onClick={closeMobileMenu}
                 className={({ isActive }) =>
                   `nav-link fw-bold ${styles.linkColor} ${
                     isActive ? styles.activeLink : ""
@@ -129,6 +145,7 @@ export default function Navbar() {
                 <li>
                   <NavLink
                     to="/resource/data"
+                    onClick={closeMobileMenu}
                     className={({ isActive }) =>
                       `dropdown-item fw-bold ${styles.linkColor} ${
                         isActive ? styles.activeDropdownItem : ""
@@ -141,6 +158,7 @@ export default function Navbar() {
                 <li>
                   <NavLink
                     to="/resource/about"
+                    onClick={closeMobileMenu}
                     className={({ isActive }) =>
                       `dropdown-item fw-bold ${styles.linkColor} ${
                         isActive ? styles.activeDropdownItem : ""
@@ -156,6 +174,7 @@ export default function Navbar() {
             <li className="nav-item">
               <NavLink
                 to="/about"
+                onClick={closeMobileMenu}
                 className={({ isActive }) =>
                   `nav-link fw-bold ${styles.linkColor} ${
                     isActive ? styles.activeLink : ""
@@ -179,7 +198,8 @@ export default function Navbar() {
               <ul className="dropdown-menu fw-bold">
                 <li>
                   <NavLink
-                    to="/affiliate/AfLogin"
+                    to="/affiliate/login"
+                    onClick={closeMobileMenu}
                     className={({ isActive }) =>
                       `dropdown-item fw-bold ${styles.linkColor} ${
                         isActive ? styles.activeDropdownItem : ""
@@ -192,6 +212,7 @@ export default function Navbar() {
                 <li>
                   <NavLink
                     to="/affiliate/join"
+                    onClick={closeMobileMenu}
                     className={({ isActive }) =>
                       `dropdown-item fw-bold ${styles.linkColor} ${
                         isActive ? styles.activeDropdownItem : ""
@@ -248,7 +269,7 @@ export default function Navbar() {
 
             <div className={styles.iconRow}>
               <div className={styles.cartWrapper}>
-                <NavLink to="/cart">
+                <NavLink to="/cart" onClick={closeMobileMenu}>
                   <img
                     src="/icons/cart.svg"
                     className={`p-1 ${styles.cursorPointer}`}
@@ -265,7 +286,11 @@ export default function Navbar() {
                 alt="Profile"
               />
 
-              <NavLink className={`btn px-3 ${styles.registerBtn}`} to="/StRegister">
+              <NavLink
+                className={`btn px-3 ${styles.registerBtn}`}
+                to="/register"
+                onClick={closeMobileMenu}
+              >
                 Register
               </NavLink>
             </div>
