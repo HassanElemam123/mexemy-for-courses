@@ -29,7 +29,7 @@ export default function LandingHome() {
               <button className={`btn ${styles.playBtn}`} aria-label="Play">
                 <img src="/icons/Symbol.svg" alt="play" className={styles.playIcon} />
               </button>
-            </NavLink> 
+            </NavLink>
               <div className={styles.watchText}>
                 Watch Our <br /> New Courses
               </div>

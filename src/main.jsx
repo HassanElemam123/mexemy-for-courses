@@ -25,6 +25,7 @@ import AfLogin from "./pages/AfLogin/AfLogin.jsx";
 import LostPassword from "./pages/LostPassword/LostPassword.jsx";
 import Faq from "./pages/Faq/Faq.jsx";
 import Events from "./pages/Events/Events.jsx";
+import StLogin from "./pages/StLogin/StLogin.jsx"
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
       { path: "/forgot-password", element: <LostPassword /> },
       { path: "/faq", element: <Faq /> },
       { path: "/events", element: <Events /> },
+      { path: "/st-login", element: <StLogin /> },
     ],
   },
 ]);

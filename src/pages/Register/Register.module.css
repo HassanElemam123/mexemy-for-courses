@@ -48,12 +48,12 @@
   color: #6c4df6;
   text-decoration: none;
   font-weight: 700;
+  transition: 0.3s;
 }
 
 .termsLink:hover {
-  text-decoration: underline;
+  color: #4e3aa6;
 }
-
 .agreeError {
   font-size: 12px;
   color: #dc3545;
@@ -61,7 +61,6 @@
   margin-bottom: 12px;
 }
 
-/* ✅ نفس زرار AffRegister */
 .submitBtn {
   width: 100%;
   background: #6c4df6;

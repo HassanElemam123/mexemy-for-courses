@@ -112,23 +112,23 @@ export default function About() {
 
               <ul className={styles.infoList}>
                 <li>
-                  <span className={styles.dot}></span>
+                  <img src="/icons/location-dot.svg" alt="" />
                   2nd Durgapur Union, Amtoli, Adasa sadar, Cumilla
                 </li>
                 <li>
-                  <span className={styles.dot}></span>
+                  <img src="/icons/phone.svg" alt="" />
                   01601069250
                 </li>
                 <li>
-                  <span className={styles.dot}></span>
+                  <img src="/icons/mail-dot.svg" alt="" />
                   Support@mexemy.com
                 </li>
                 <li>
-                  <span className={styles.dot}></span>
+                  <img src="/icons/licence.svg" alt="" />
                   Licence no : 2022191679401304
                 </li>
                 <li>
-                  <span className={styles.dot}></span>
+                  <img src="/icons/e-learning.svg" alt="" />
                   Business type: E-learning
                 </li>
               </ul>

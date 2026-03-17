@@ -280,11 +280,7 @@ export default function Navbar() {
                 <span className={styles.cartBadge}>{cartCount}</span>
               </div>
 
-              <img
-                src="/icons/login.svg"
-                className={`p-1 ${styles.cursorPointer}`}
-                alt="Profile"
-              />
+              <NavLink to="/st-login">Login</NavLink>
 
               <NavLink
                 className={`btn px-3 ${styles.registerBtn}`}
