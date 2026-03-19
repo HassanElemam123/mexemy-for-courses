@@ -215,3 +215,37 @@
     font-size: 14px;
   }
 }
+
+.loginBtn {
+  background: #161439 !important;
+  color: #fff !important;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  transition: 0.3s;
+}
+
+.loginBtn:hover {
+  background: #0f102f !important;
+  color: #fff !important;
+}
+
+.logoutBtn {
+  background: #dc2626 !important;
+  color: #fff !important;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  transition: 0.3s;
+}
+
+.logoutBtn:hover {
+  background: #b91c1c !important;
+  color: #fff !important;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #161439;
+}

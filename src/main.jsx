@@ -15,6 +15,7 @@ import Courses from "./pages/Courses/Courses.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
 import { CartProvider } from "./CartContext.jsx";
+import { AuthProvider } from "./AuthContext.jsx";
 import "./index.css";
 import SingleCourse from "./pages/SingleCourse/SingleCourse.jsx";
 import About from "./pages/About/About.jsx";
@@ -25,7 +26,10 @@ import AfLogin from "./pages/AfLogin/AfLogin.jsx";
 import LostPassword from "./pages/LostPassword/LostPassword.jsx";
 import Faq from "./pages/Faq/Faq.jsx";
 import Events from "./pages/Events/Events.jsx";
-import StLogin from "./pages/StLogin/StLogin.jsx"
+import StLogin from "./pages/StLogin/StLogin.jsx";
+import Data from "./pages/Data/Data.jsx";
+import AboutResource from "./pages/AboutResources/AboutResource.jsx";
+import WebDesignCourse from "./pages/Courses/WebDesignCourse/WebDesignCourse.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -34,7 +38,7 @@ function RootLayout() {
       <ScrollToTop />
       <Navbar />
       <Outlet />
-      <Footer/>
+      <Footer />
     </>
   );
 }
@@ -47,6 +51,7 @@ const router = createBrowserRouter([
       { path: "/courses", element: <Courses /> },
       { path: "/cart", element: <Cart /> },
       { path: "/course/:id", element: <SingleCourse /> },
+      { path: "/web-design-course", element: <WebDesignCourse /> },
       { path: "/about", element: <About /> },
       { path: "/register", element: <Register /> },
       { path: "/terms", element: <Terms /> },
@@ -56,12 +61,16 @@ const router = createBrowserRouter([
       { path: "/faq", element: <Faq /> },
       { path: "/events", element: <Events /> },
       { path: "/st-login", element: <StLogin /> },
+      { path: "/resource/data", element: <Data /> },
+      { path: "/resource/about", element: <AboutResource /> },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <CartProvider>
-    <RouterProvider router={router} />
-  </CartProvider>
+  <AuthProvider>
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  </AuthProvider>
 );

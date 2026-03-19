@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useAuth } from "../../AuthContext.jsx";
 import styles from "./Register.module.css";
 
 const registerSchema = Yup.object({
@@ -38,6 +39,8 @@ const registerSchema = Yup.object({
 export default function Register() {
   const [searchParams] = useSearchParams();
   const prefilledEmail = searchParams.get("email") || "";
+  const navigate = useNavigate();
+  const { register } = useAuth();
 
   return (
     <main className={styles.page}>
@@ -59,9 +62,18 @@ export default function Register() {
                 }}
                 validationSchema={registerSchema}
                 onSubmit={(values, { resetForm }) => {
-                  console.log("Register Data:", values);
+                  const userData = {
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    username: values.username,
+                    email: values.email,
+                    password: values.password,
+                  };
+
+                  register(userData);
                   alert("Registered successfully ✅");
                   resetForm();
+                  navigate("/st-login");
                 }}
               >
                 {({

@@ -1,17 +1,23 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useAuth } from "../../AuthContext.jsx";
 import styles from "./StLogin.module.css";
 
 const loginSchema = Yup.object({
   identity: Yup.string().required("Username or email is required"),
-  password: Yup.string()
-    .min(6, "Min 6 characters")
-    .required("Password is required"),
+  password: Yup.string().min(6, "Min 6 characters").required("Password is required"),
   keepSignedIn: Yup.boolean(),
 });
 
 export default function StLogin() {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const [loginError, setLoginError] = useState("");
+
   return (
     <main className={styles.page}>
       <div className="container py-5">
@@ -27,10 +33,23 @@ export default function StLogin() {
                   keepSignedIn: false,
                 }}
                 validationSchema={loginSchema}
+                validateOnMount
                 onSubmit={(values, { resetForm }) => {
-                  console.log("Login Data:", values);
-                  alert("Signed in successfully ✅");
-                  resetForm();
+                  setLoginError("");
+
+                  const result = login(
+                    values.identity,
+                    values.password,
+                    values.keepSignedIn
+                  );
+
+                  if (result.ok) {
+                    alert("Signed in successfully ✅");
+                    resetForm();
+                    navigate(from, { replace: true });
+                  } else {
+                    setLoginError(result.message);
+                  }
                 }}
               >
                 {({
@@ -42,7 +61,6 @@ export default function StLogin() {
                   handleSubmit,
                   isSubmitting,
                   isValid,
-                  dirty,
                 }) => (
                   <form onSubmit={handleSubmit} noValidate>
                     <div className="mb-3">
@@ -54,7 +72,10 @@ export default function StLogin() {
                           touched.identity && errors.identity ? "is-invalid" : ""
                         }`}
                         value={values.identity}
-                        onChange={handleChange}
+                        onChange={(e) => {
+                          handleChange(e);
+                          if (loginError) setLoginError("");
+                        }}
                         onBlur={handleBlur}
                       />
                       {touched.identity && errors.identity && (
@@ -71,7 +92,10 @@ export default function StLogin() {
                           touched.password && errors.password ? "is-invalid" : ""
                         }`}
                         value={values.password}
-                        onChange={handleChange}
+                        onChange={(e) => {
+                          handleChange(e);
+                          if (loginError) setLoginError("");
+                        }}
                         onBlur={handleBlur}
                       />
                       {touched.password && errors.password && (
@@ -79,9 +103,13 @@ export default function StLogin() {
                       )}
                     </div>
 
-                    <div
-                      className={`d-flex align-items-center justify-content-between mb-4 ${styles.metaRow}`}
-                    >
+                    {loginError && (
+                      <div className="alert alert-danger py-2" role="alert">
+                        {loginError}
+                      </div>
+                    )}
+
+                    <div className={`d-flex align-items-center justify-content-between mb-4 ${styles.metaRow}`}>
                       <div className="form-check m-0">
                         <input
                           className="form-check-input"
@@ -100,10 +128,7 @@ export default function StLogin() {
                         </label>
                       </div>
 
-                      <NavLink
-                        to="/forgot-password"
-                        className={styles.forgotLink}
-                      >
+                      <NavLink to="/forgot-password" className={styles.forgotLink}>
                         Forgot?
                       </NavLink>
                     </div>
@@ -111,7 +136,7 @@ export default function StLogin() {
                     <button
                       type="submit"
                       className={`btn ${styles.submitBtn}`}
-                      disabled={!dirty || !isValid || isSubmitting}
+                      disabled={!isValid || isSubmitting}
                     >
                       Sign In
                     </button>

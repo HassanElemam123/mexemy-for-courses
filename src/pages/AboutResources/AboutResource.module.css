@@ -1,0 +1,249 @@
+.page {
+  background: #fff;
+}
+
+/* hero */
+.hero {
+  padding: 90px 0 100px;
+  background: radial-gradient(
+    1200px 650px at 20% 30%,
+    #8a18ff 0%,
+    #4c0fc3 45%,
+    #1b0580 100%
+  );
+  color: #fff;
+}
+
+.heroInner {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  margin: 0 0 14px;
+  font-size: clamp(34px, 5vw, 62px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.heroText {
+  margin: 0 auto;
+  max-width: 680px;
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.92;
+}
+
+/* reusable */
+.badge {
+  display: inline-block;
+  background: rgba(108, 77, 246, 0.12);
+  color: #6c4df6;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 900;
+  line-height: 1.2;
+  color: #161439;
+}
+
+.centerTitle {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 900;
+  color: #161439;
+}
+
+/* intro */
+.introSection {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.introContent {
+  max-width: 560px;
+}
+
+.introText {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #5b5a70;
+}
+
+.introImg {
+  width: min(420px, 100%);
+  height: auto;
+  display: inline-block;
+}
+
+/* features */
+.featuresSection {
+  padding: 80px 0;
+  background: #f7f8fd;
+}
+
+.featureCard {
+  height: 100%;
+  background: #fff;
+  border: 1px solid #ececf3;
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: 0 14px 35px rgba(17, 24, 39, 0.05);
+}
+
+.featureNumber {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: #f1edff;
+  color: #6c4df6;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.featureTitle {
+  margin: 0 0 10px;
+  color: #161439;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.featureText {
+  margin: 0;
+  color: #6a697d;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* steps */
+.stepsSection {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.stepCard {
+  height: 100%;
+  text-align: center;
+  padding: 28px 22px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #ececf3;
+  box-shadow: 0 14px 30px rgba(17, 24, 39, 0.04);
+}
+
+.stepCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  background: linear-gradient(135deg, #8a18ff, #4c0fc3);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.stepTitle {
+  margin: 0 0 10px;
+  color: #161439;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.stepText {
+  margin: 0;
+  color: #6a697d;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* cta */
+.ctaSection {
+  padding: 0 0 90px;
+  background: #fff;
+}
+
+.ctaBox {
+  border-radius: 26px;
+  padding: 48px 24px;
+  text-align: center;
+  background: radial-gradient(
+    1200px 650px at 20% 30%,
+    #8a18ff 0%,
+    #4c0fc3 45%,
+    #1b0580 100%
+  );
+  color: #fff;
+}
+
+.ctaTitle {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 900;
+}
+
+.ctaText {
+  margin: 0 auto 24px;
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.ctaBtn {
+  background: #ffcc2f;
+  color: #161439;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-weight: 800;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.ctaBtn:hover {
+  background: #f3bf17;
+  color: #161439;
+}
+
+/* responsive */
+@media (max-width: 991.98px) {
+  .introContent {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    padding: 70px 0 80px;
+  }
+
+  .heroText {
+    font-size: 14px;
+  }
+
+  .introSection,
+  .featuresSection,
+  .stepsSection {
+    padding: 60px 0;
+  }
+
+  .ctaBox {
+    padding: 38px 18px;
+  }
+}

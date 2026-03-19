@@ -2,8 +2,10 @@ import { useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./LastGrid.module.css";
 import { useCart } from "../../../../CartContext";
+import { useAuth } from "../../../../AuthContext.jsx";
 
 const latestCourse = {
+  id: "ac2",
   titleSmall: "Our latest course:",
   title: "Video Editing\nand Storytelling",
   cta: "Enroll Now",
@@ -128,11 +130,25 @@ const extraSections = [
 function CourseCard({ item, onOpenVideo }) {
   const isActive = item.status === "active";
   const { toggleCart, isInCart } = useCart();
+  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const inCart = isInCart(item.id);
 
   const goToCourse = () => {
     navigate(`/course/${item.id}`, { state: { course: item } });
+  };
+
+  const handleEnroll = () => {
+    if (!isLoggedIn) {
+      navigate("/st-login", {
+        state: { from: { pathname: `/course/${item.id}` } },
+      });
+      return;
+    }
+
+    if (item.video) {
+      onOpenVideo(item.video, item.title);
+    }
   };
 
   return (
@@ -159,7 +175,7 @@ function CourseCard({ item, onOpenVideo }) {
               <button
                 type="button"
                 className={styles.enrollBtn}
-                onClick={() => item.video && onOpenVideo(item.video, item.title)}
+                onClick={handleEnroll}
               >
                 Enroll now{" "}
                 <span className={styles.enrollIcon}>
@@ -190,6 +206,8 @@ export default function LastCourses() {
   const [open, setOpen] = useState(false);
   const [videoSrc, setVideoSrc] = useState("");
   const [videoTitle, setVideoTitle] = useState("");
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const searchQuery = searchParams.get("search")?.toLowerCase().trim() || "";
@@ -235,6 +253,17 @@ export default function LastCourses() {
     setVideoTitle("");
   };
 
+  const handleLatestEnroll = () => {
+    if (!isLoggedIn) {
+      navigate("/st-login", {
+        state: { from: { pathname: `/course/${latestCourse.id}` } },
+      });
+      return;
+    }
+
+    openVideo(latestCourse.video, "Latest Course");
+  };
+
   return (
     <section className={styles.page}>
       {!searchQuery && (
@@ -256,7 +285,7 @@ export default function LastCourses() {
                 <button
                   className={`btn ${styles.enrollYellow}`}
                   type="button"
-                  onClick={() => openVideo(latestCourse.video, "Latest Course")}
+                  onClick={handleLatestEnroll}
                 >
                   {latestCourse.cta}
                   <img src="/icons/arrow.svg" alt="" className={styles.yellowDot} />
@@ -265,7 +294,23 @@ export default function LastCourses() {
 
               <div className="col-12 col-lg-6 d-flex justify-content-lg-end justify-content-center">
                 <div className={styles.heroCard}>
-                  <div className={styles.heroMedia}>
+                  <div
+                    className={styles.heroMedia}
+                    onClick={() =>
+                      navigate(`/course/${latestCourse.id}`, {
+                        state: { course: latestCourse },
+                      })
+                    }
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        navigate(`/course/${latestCourse.id}`, {
+                          state: { course: latestCourse },
+                        });
+                      }
+                    }}
+                  >
                     <img src={latestCourse.img} alt="Latest Course" />
                   </div>
                   <div className={styles.heroFooter}>
@@ -360,11 +405,23 @@ export default function LastCourses() {
                       </p>
 
                       <div className={styles.socialRow}>
-                        <a href="https://web.facebook.com/mexemy.bd" target="_blank" className={styles.socialIcon} aria-label="Facebook">
+                        <a
+                          href="https://web.facebook.com/mexemy.bd"
+                          target="_blank"
+                          rel="noreferrer"
+                          className={styles.socialIcon}
+                          aria-label="Facebook"
+                        >
                           <img src="/icons/facebook-down.svg" alt="Facebook" />
                         </a>
 
-                        <a href="https://www.youtube.com/@mexemyclasses" target="_blank" className={styles.socialIcon} aria-label="YouTube">
+                        <a
+                          href="https://www.youtube.com/@mexemyclasses"
+                          target="_blank"
+                          rel="noreferrer"
+                          className={styles.socialIcon}
+                          aria-label="YouTube"
+                        >
                           <img src="/icons/youtube-down.svg" alt="YouTube" />
                         </a>
                       </div>
@@ -382,7 +439,11 @@ export default function LastCourses() {
           <div className={styles.modalCard} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalTop}>
               <div className={styles.modalTitle}>{videoTitle}</div>
-              <button className={styles.modalClose} onClick={closeVideo} aria-label="Close">
+              <button
+                className={styles.modalClose}
+                onClick={closeVideo}
+                aria-label="Close"
+              >
                 ✕
               </button>
             </div>

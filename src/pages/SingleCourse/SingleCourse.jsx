@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../CartContext";
+import { useAuth } from "../../AuthContext.jsx";
 import styles from "./SingleCourse.module.css";
 
 const fallbackCourses = {
@@ -9,10 +10,10 @@ const fallbackCourses = {
     title: "Web Design",
     img: "/Wordpress-web-design-and-ecommerce-course-update-3.0.webp.png",
     video: "https://www.youtube.com/embed/rIPOJG3F3Vg",
-    instructor: "Ahmed Hassan & Olivia Mia",
-    duration: "18 Hours",
+    instructor: "Simon & Olivia Mia",
+    duration: "1 Hour",
     level: "Beginner",
-    lessons: 24,
+    lessons: 4,
     language: "English & Arabic",
     description:
       "Learn how to design modern and responsive websites with clean layouts, strong typography, and better user experience principles.",
@@ -55,11 +56,11 @@ const fallbackCourses = {
     title: "Canva Designing",
     img: "/canva.png",
     video: "https://www.youtube.com/embed/q4OWKoUUjdY?start=7",
-    instructor: "Sara Ali",
+    instructor: "Aymen singh",
     duration: "10 Hours",
     level: "Beginner",
     lessons: 16,
-    language: "Arabic",
+    language: "Indian",
     description:
       "Create eye-catching social media posts, business visuals, and presentations quickly using Canva tools and ready-made assets.",
     about:
@@ -78,11 +79,11 @@ const fallbackCourses = {
     title: "Affiliate Marketing",
     img: "/Affiliate.png",
     video: "https://www.youtube.com/embed/itgmO78eK5I",
-    instructor: "Omar Khaled",
+    instructor: "Mark Shown",
     duration: "12 Hours",
     level: "Beginner",
     lessons: 20,
-    language: "Arabic",
+    language: "English",
     description:
       "Understand affiliate marketing models, traffic sources, and how to promote products effectively to earn commissions.",
     about:
@@ -101,10 +102,10 @@ const fallbackCourses = {
     title: "Web Design",
     img: "/Wordpress-web-design-and-ecommerce-course-update-3.0.webp.png",
     video: "https://www.youtube.com/embed/rIPOJG3F3Vg",
-    instructor: "Ahmed Hassan",
-    duration: "18 Hours",
+    instructor: "Simon & Olivia Mia",
+    duration: "1 Hour",
     level: "Beginner",
-    lessons: 22,
+    lessons: 4,
     language: "English & Arabic",
     description:
       "Build strong web design skills and learn how to create visually balanced pages for modern websites and digital products.",
@@ -584,6 +585,7 @@ export default function SingleCourse() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toggleCart, isInCart } = useCart();
+  const { isLoggedIn } = useAuth();
   const [openVideo, setOpenVideo] = useState(false);
 
   const rawCourse = state?.course || fallbackCourses[id];
@@ -611,6 +613,26 @@ export default function SingleCourse() {
 
   const inCart = isInCart(course.id);
 
+  const handleWatchClick = () => {
+    if (!isLoggedIn) {
+      navigate("/st-login", {
+        state: { from: { pathname: `/course/${course.id}` } },
+      });
+      return;
+    }
+
+    if (
+      course.title.toLowerCase() === "web design" ||
+      course.id === "ac1" ||
+      course.id === "dd1"
+    ) {
+      navigate("/web-design-course");
+      return;
+    }
+
+    setOpenVideo(true);
+  };
+
   return (
     <section className={styles.page}>
       <div className="container py-5">
@@ -636,7 +658,7 @@ export default function SingleCourse() {
                 <button
                   type="button"
                   className={styles.primaryBtn}
-                  onClick={() => setOpenVideo(true)}
+                  onClick={handleWatchClick}
                 >
                   Watch
                 </button>

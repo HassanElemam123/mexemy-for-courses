@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useMemo, useRef, useState } from "react";
 import styles from "./Navbar.module.css";
 import { useCart } from "../CartContext.jsx";
+import { useAuth } from "../AuthContext.jsx";
 
 const allCourses = [
   { id: "ac1", title: "Web Design" },
@@ -26,6 +27,7 @@ export default function Navbar() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   const navCollapseRef = useRef(null);
+  const { user, isLoggedIn, logout } = useAuth();
 
   const closeMobileMenu = () => {
     if (window.innerWidth < 992 && navCollapseRef.current) {
@@ -280,7 +282,33 @@ export default function Navbar() {
                 <span className={styles.cartBadge}>{cartCount}</span>
               </div>
 
-              <NavLink to="/st-login">Login</NavLink>
+              {isLoggedIn ? (
+                <>
+                  {user?.username && (
+                    <span className={styles.userName}>Hi, {user.username}</span>
+                  )}
+
+                  <button
+                    type="button"
+                    className={`btn px-3 ${styles.logoutBtn}`}
+                    onClick={() => {
+                      logout();
+                      closeMobileMenu();
+                      navigate("/");
+                    }}
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <NavLink
+                  className={`btn px-3 ${styles.loginBtn}`}
+                  to="/st-login"
+                  onClick={closeMobileMenu}
+                >
+                  Login
+                </NavLink>
+              )}
 
               <NavLink
                 className={`btn px-3 ${styles.registerBtn}`}
