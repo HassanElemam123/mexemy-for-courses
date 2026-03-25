@@ -198,7 +198,6 @@
   display: block;
 }
 
-/* ===== bottom purple strip ===== */
 .bottomStrip {
   height: 64px;
   background: radial-gradient(1200px 650px at 20% 30%, #5b19ff 0%, #2a0a6b 45%, #14033c 100%);

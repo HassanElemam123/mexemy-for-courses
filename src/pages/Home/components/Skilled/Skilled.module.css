@@ -181,5 +181,5 @@
 .active{
   opacity: 1;
   transform: scale(1);
-  border: 3px solid rgba(94,63,222,.55); /* البوردر الحقيقي */
+  border: 3px solid rgba(94,63,222,.55); 
 }

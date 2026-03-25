@@ -160,7 +160,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ===== PURPLE STRIP ===== */}
       <div className={styles.bottomStrip}></div>
     </main>
   );

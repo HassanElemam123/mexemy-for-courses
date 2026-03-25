@@ -46,7 +46,7 @@
 
 .imgWrap img{
   width: 100%;
-  height: 190px;        /* ثبّت الصورة */
+  height: 190px;
   object-fit: cover;
   border-radius: 12px;
   display: block;
@@ -110,7 +110,6 @@
   min-height: 36px;
   color: #161439;
 
-  /* تثبيت سطرين */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -132,14 +131,12 @@
   overflow: hidden;
 }
 
-/* ✅ صف ثابت يخلي الصورة تنزل لتحت */
 .ctaRow{
   display: flex;
-  align-items: flex-end;  /* ينزل الصورة لآخر الكارت */
+  align-items: flex-end;
   gap: 16px;
 }
 
-/* ✅ الصورة */
 .ctaImgWrap{
   position: relative;
   width: 200px;
@@ -150,7 +147,6 @@
   flex: 0 0 auto;
 }
 
-/* ✅ الشكل الأصفر ورا الصورة (زي الفيجما) */
 .yellowLeft::before{
   content:"";
   position: absolute;
@@ -160,11 +156,10 @@
   height: 120px;
   background: #ffcc2f;
   border-radius: 999px;
-  transform: rotate(-12deg); /* ✅ ميل */
+  transform: rotate(-12deg);
   z-index: 0;
 }
 
-/* الصورة فوق الشكل */
 .ctaImgWrap img{
   position: relative;
   z-index: 1;

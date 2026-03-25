@@ -24,7 +24,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Middle (NavLink) */}
             <div className="col-12 col-lg-4 d-flex justify-content-lg-center">
               <div className={styles.linksCol}>
                 <div className={styles.linksTitle}>All pages</div>
@@ -92,7 +91,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* الشريط الأبيض */}
       <div className={styles.bottom}>
         <div className="container">
           <div className="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">

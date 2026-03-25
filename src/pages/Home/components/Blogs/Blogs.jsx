@@ -40,7 +40,6 @@ export default function Blogs() {
 
   return (
     <>
-      {/* ===== Blogs Section (Purple) ===== */}
       <section className={styles.section}>
         <div className="container-fluid px-4">
           <div className="text-center mb-4">
@@ -96,7 +95,7 @@ export default function Blogs() {
             <div className="col-12 col-lg-6">
               <div className={styles.ctaCard}>
                 <div className={styles.ctaRow}>
-                  {/*  الصورة + الشكل الأصفر */}
+
                   <div className={`${styles.ctaImgWrap} ${styles.yellowLeft}`}>
                     <img src="/cta-instructor.png" alt="Become a Instructor" />
                   </div>
@@ -123,7 +122,7 @@ export default function Blogs() {
             <div className="col-12 col-lg-6">
               <div className={styles.ctaCard}>
                 <div className={styles.ctaRow}>
-                  {/*  الصورة + الشكل الأصفر */}
+
                   <div className={`${styles.ctaImgWrap} ${styles.yellowLeft}`}>
                     <img src="/cta-students.png" alt="Become a Student" />
                   </div>

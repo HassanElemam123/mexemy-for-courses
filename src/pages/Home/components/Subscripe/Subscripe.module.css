@@ -40,10 +40,10 @@
   .form{
     min-width: 100%;
     width: 100%;
-    flex-direction: column;   /* بدل ما يبقوا جنب بعض */
+    flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    border-radius: 16px;      /* شكل أحلى وهو عمودي */
+    border-radius: 16px;
   }
 
   .input{
@@ -76,8 +76,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: transparent;   /* بدل أي لون */
-  border: 1px solid rgba(255,255,255,.18); /* اختياري */
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.18);
   border-radius: 999px;
   padding: 8px;
   min-width: min(520px, 100%);
@@ -209,7 +209,6 @@
   background: transparent;
 }
 
-/* البلوب الكبير ورا الكروت */
 .cardsWrap::before{
   content:"";
   position:absolute;

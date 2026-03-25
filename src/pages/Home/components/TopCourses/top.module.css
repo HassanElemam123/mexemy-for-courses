@@ -104,8 +104,7 @@
   overflow: hidden;
   border-radius: 16px 16px 0 0;
 
-  aspect-ratio: 16 / 9;   /* أو 4/3 حسب اللي يعجبك */
-  /* لو عايز طول أكبر: 3 / 2 مثلا */
+  aspect-ratio: 16 / 9;
 }
 
 .coverImg{
