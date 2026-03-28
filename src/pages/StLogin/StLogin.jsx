@@ -1,8 +1,9 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useAuth } from "../../AuthContext.jsx";
+import { demoAccounts } from "../../services/authApi.js";
 import styles from "./StLogin.module.css";
 
 const loginSchema = Yup.object({
@@ -17,6 +18,12 @@ export default function StLogin() {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const [loginError, setLoginError] = useState("");
+  const [showDemoAccounts, setShowDemoAccounts] = useState(false);
+
+  const demoHint = useMemo(
+    () => "Use DummyJSON test accounts",
+    []
+  );
 
   return (
     <main className={styles.page}>
@@ -34,10 +41,10 @@ export default function StLogin() {
                 }}
                 validationSchema={loginSchema}
                 validateOnMount
-                onSubmit={(values, { resetForm }) => {
+                onSubmit={async (values, { resetForm, setSubmitting }) => {
                   setLoginError("");
 
-                  const result = login(
+                  const result = await login(
                     values.identity,
                     values.password,
                     values.keepSignedIn
@@ -50,6 +57,8 @@ export default function StLogin() {
                   } else {
                     setLoginError(result.message);
                   }
+
+                  setSubmitting(false);
                 }}
               >
                 {({
@@ -61,8 +70,54 @@ export default function StLogin() {
                   handleSubmit,
                   isSubmitting,
                   isValid,
+                  setFieldValue,
                 }) => (
                   <form onSubmit={handleSubmit} noValidate>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <button
+                        type="button"
+                        className="btn btn-outline-secondary btn-sm"
+                        onClick={() => setShowDemoAccounts((prev) => !prev)}
+                      >
+                        {showDemoAccounts ? "Hide test accounts" : "Show test accounts"}
+                      </button>
+
+                      <small className="text-muted">{demoHint}</small>
+                    </div>
+
+                    {showDemoAccounts && (
+                      <div className="border rounded p-2 mb-3 bg-light">
+                        <p className="mb-2 fw-semibold">DummyJSON Accounts</p>
+
+                        <div className="d-grid gap-2">
+                          {demoAccounts.map((account) => (
+                            <button
+                              key={account.username}
+                              type="button"
+                              className="btn btn-sm btn-light border text-start"
+                              onClick={() => {
+                                setFieldValue("identity", account.username);
+                                setFieldValue("password", account.password);
+                                setLoginError("");
+                                setShowDemoAccounts(false);
+                              }}
+                            >
+                              <div className="fw-semibold">{account.label}</div>
+                              <div className="small text-muted">
+                                username: {account.username}
+                              </div>
+                              <div className="small text-muted">
+                                email: {account.email}
+                              </div>
+                              <div className="small text-muted">
+                                password: {account.password}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="mb-3">
                       <input
                         type="text"
@@ -109,7 +164,9 @@ export default function StLogin() {
                       </div>
                     )}
 
-                    <div className={`d-flex align-items-center justify-content-between mb-4 ${styles.metaRow}`}>
+                    <div
+                      className={`d-flex align-items-center justify-content-between mb-4 ${styles.metaRow}`}
+                    >
                       <div className="form-check m-0">
                         <input
                           className="form-check-input"
@@ -138,7 +195,7 @@ export default function StLogin() {
                       className={`btn ${styles.submitBtn}`}
                       disabled={!isValid || isSubmitting}
                     >
-                      Sign In
+                      {isSubmitting ? "Signing In..." : "Sign In"}
                     </button>
 
                     <p className={styles.registerText}>
