@@ -4,13 +4,12 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      {/* الجزء البنفسجي */}
       <div className={styles.top}>
         <div className="container">
-          <div className="row gy-4 align-items-ؤثىفثق">
+          <div className="row gy-4 align-items-center text-center text-lg-start">
             {/* Left */}
-            <div className="col-12 col-lg-4">
-              <img src="/icons/mexemy-logo-white.svg" alt="" className="mb-3"/>
+            <div className="col-12 col-lg-4 d-flex flex-column align-items-center align-items-lg-start">
+              <img src="/icons/mexemy-logo-white.svg" alt="" className="mb-3" />
 
               <div className={styles.quote}>
                 <span className={styles.quoteLine}></span>
@@ -24,7 +23,8 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="col-12 col-lg-4 d-flex justify-content-lg-center">
+            {/* Center */}
+            <div className="col-12 col-lg-4 d-flex justify-content-center">
               <div className={styles.linksCol}>
                 <div className={styles.linksTitle}>All pages</div>
 
@@ -72,13 +72,12 @@ export default function Footer() {
                       FAQ
                     </NavLink>
                   </li>
-
                 </ul>
               </div>
             </div>
 
             {/* Right */}
-            <div  className="col-12 col-lg-4 d-flex align-items-center justify-content-center">
+            <div className="col-12 col-lg-4 d-flex align-items-center justify-content-center">
               <div className={styles.paymentsWrap}>
                 <img
                   className={styles.paymentsImg}
@@ -93,17 +92,35 @@ export default function Footer() {
 
       <div className={styles.bottom}>
         <div className="container">
-          <div className="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+          <div className="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start">
             <div className={styles.copy}>Copyright © 2024 @mexemy.com</div>
 
             <div className={styles.social}>
-              <a className={styles.socialBtn} href="https://web.facebook.com/mexemy.bd" target="_blank" aria-label="Facebook">
+              <a
+                className={styles.socialBtn}
+                href="https://web.facebook.com/mexemy.bd"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
                 <img src="/icons/Link-Facebook→SVG.svg" alt="" />
               </a>
-              <a className={styles.socialBtn} href="http://instagram.com/mexemy.official/" target="_blank" aria-label="Instagram">
+              <a
+                className={styles.socialBtn}
+                href="http://instagram.com/mexemy.official/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
                 <img src="/icons/Link-Instagram→SVG.svg" alt="" />
               </a>
-              <a className={styles.socialBtn} href="https://www.youtube.com/@mexemyclasses"  target="_blank" aria-label="YouTube">
+              <a
+                className={styles.socialBtn}
+                href="https://www.youtube.com/@mexemyclasses"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="YouTube"
+              >
                 <img src="/icons/Link-YouTube→SVG.svg" alt="" />
               </a>
             </div>
