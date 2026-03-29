@@ -22,7 +22,7 @@ const allCourses = [
 ];
 
 export default function Navbar() {
-  const { cartCount } = useCart();
+  const { cartCount, clearCart } = useCart();
   const [searchText, setSearchText] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
@@ -76,6 +76,13 @@ export default function Navbar() {
     setShowSuggestions(false);
     navigate(`/courses?search=${encodeURIComponent(title)}`);
     closeMobileMenu();
+  };
+
+  const handleLogout = () => {
+    clearCart();
+    logout();
+    closeMobileMenu();
+    navigate("/");
   };
 
   return (
@@ -291,11 +298,7 @@ export default function Navbar() {
                   <button
                     type="button"
                     className={`btn px-3 ${styles.logoutBtn}`}
-                    onClick={() => {
-                      logout();
-                      closeMobileMenu();
-                      navigate("/");
-                    }}
+                    onClick={handleLogout}
                   >
                     Logout
                   </button>

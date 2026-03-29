@@ -3,13 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Navbar from "./Navbar/Navbar.jsx";
 import Footer from "./Footer/Footer.jsx";
-
 import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
 } from "react-router-dom";
-
 import Home from "./pages/Home/Home.jsx";
 import Courses from "./pages/Courses/Courses.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
@@ -30,13 +28,14 @@ import StLogin from "./pages/StLogin/StLogin.jsx";
 import Data from "./pages/Data/Data.jsx";
 import AboutResource from "./pages/AboutResources/AboutResource.jsx";
 import WebDesignCourse from "./pages/Courses/WebDesignCourse/WebDesignCourse.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
   return (
     <>
-      <ScrollToTop />
       <Navbar />
+      <ScrollToTop />
       <Outlet />
       <Footer />
     </>
@@ -49,9 +48,32 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/courses", element: <Courses /> },
-      { path: "/cart", element: <Cart /> },
-      { path: "/course/:id", element: <SingleCourse /> },
-      { path: "/web-design-course", element: <WebDesignCourse /> },
+
+      {
+        path: "/cart",
+        element: (
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/course/:id",
+        element: (
+          <ProtectedRoute>
+            <SingleCourse />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/web-design-course",
+        element: (
+          <ProtectedRoute>
+            <WebDesignCourse />
+          </ProtectedRoute>
+        ),
+      },
+
       { path: "/about", element: <About /> },
       { path: "/register", element: <Register /> },
       { path: "/terms", element: <Terms /> },
@@ -61,7 +83,16 @@ const router = createBrowserRouter([
       { path: "/faq", element: <Faq /> },
       { path: "/events", element: <Events /> },
       { path: "/st-login", element: <StLogin /> },
-      { path: "/resource/data", element: <Data /> },
+
+      {
+        path: "/resource/data",
+        element: (
+          <ProtectedRoute>
+            <Data />
+          </ProtectedRoute>
+        ),
+      },
+
       { path: "/resource/about", element: <AboutResource /> },
     ],
   },
