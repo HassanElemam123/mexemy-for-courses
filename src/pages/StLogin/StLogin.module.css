@@ -16,6 +16,7 @@
 .title {
   margin: 0 0 22px;
   font-size: 18px;
+  text-align: center;
   font-weight: 800;
   color: #161439;
 }
@@ -110,5 +111,39 @@
 
   .card {
     padding: 18px 14px;
+  }
+}
+
+.demoTopBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.demoToggleBtn {
+  flex: 0 0 auto;
+}
+
+.demoHint {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 576px) {
+  .demoTopBar {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .demoToggleBtn {
+    width: 100%;
+  }
+
+  .demoHint {
+    width: 100%;
+    display: block;
+    text-align: center;
   }
 }

@@ -20,10 +20,7 @@ export default function StLogin() {
   const [loginError, setLoginError] = useState("");
   const [showDemoAccounts, setShowDemoAccounts] = useState(false);
 
-  const demoHint = useMemo(
-    () => "Use DummyJSON test accounts",
-    []
-  );
+  const demoHint = useMemo(() => "Use DummyJSON test accounts", []);
 
   return (
     <main className={styles.page}>
@@ -69,20 +66,19 @@ export default function StLogin() {
                   handleChange,
                   handleSubmit,
                   isSubmitting,
-                  isValid,
                   setFieldValue,
                 }) => (
                   <form onSubmit={handleSubmit} noValidate>
-                    <div className="d-flex justify-content-between align-items-center mb-3">
+                    <div className={styles.demoTopBar}>
                       <button
                         type="button"
-                        className="btn btn-outline-secondary btn-sm"
+                        className={`btn btn-outline-secondary btn-sm ${styles.demoToggleBtn}`}
                         onClick={() => setShowDemoAccounts((prev) => !prev)}
                       >
                         {showDemoAccounts ? "Hide test accounts" : "Show test accounts"}
                       </button>
 
-                      <small className="text-muted">{demoHint}</small>
+                      <small className={`text-muted ${styles.demoHint}`}>{demoHint}</small>
                     </div>
 
                     {showDemoAccounts && (
@@ -193,7 +189,7 @@ export default function StLogin() {
                     <button
                       type="submit"
                       className={`btn ${styles.submitBtn}`}
-                      disabled={!isValid || isSubmitting}
+                      disabled={isSubmitting}
                     >
                       {isSubmitting ? "Signing In..." : "Sign In"}
                     </button>
