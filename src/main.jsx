@@ -3,11 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Navbar from "./Navbar/Navbar.jsx";
 import Footer from "./Footer/Footer.jsx";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home/Home.jsx";
 import Courses from "./pages/Courses/Courses.jsx";
 import Cart from "./pages/Cart/Cart.jsx";
@@ -29,6 +25,8 @@ import Data from "./pages/Data/Data.jsx";
 import AboutResource from "./pages/AboutResources/AboutResource.jsx";
 import WebDesignCourse from "./pages/Courses/WebDesignCourse/WebDesignCourse.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import Blogs from "./pages/Blogs/Blogs";
+import SingleBlog from "./pages/Blogs/SingleBlog";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -83,6 +81,8 @@ const router = createBrowserRouter([
       { path: "/faq", element: <Faq /> },
       { path: "/events", element: <Events /> },
       { path: "/st-login", element: <StLogin /> },
+      { path: "/blogs", element: <Blogs /> },
+      { path: "/blogs/:slug", element: <SingleBlog /> },
 
       {
         path: "/resource/data",
@@ -103,5 +103,5 @@ createRoot(document.getElementById("root")).render(
     <CartProvider>
       <RouterProvider router={router} />
     </CartProvider>
-  </AuthProvider>
+  </AuthProvider>,
 );

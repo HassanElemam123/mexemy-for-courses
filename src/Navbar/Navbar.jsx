@@ -140,6 +140,20 @@ export default function Navbar() {
               </NavLink>
             </li>
 
+            <li className="nav-item">
+              <NavLink
+                to="/blogs"
+                onClick={closeMobileMenu}
+                className={({ isActive }) =>
+                  `nav-link fw-bold ${styles.linkColor} ${
+                    isActive ? styles.activeLink : ""
+                  }`
+                }
+              >
+                Blogs
+              </NavLink>
+            </li>
+
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle fw-bold"
@@ -235,7 +249,9 @@ export default function Navbar() {
             </li>
           </ul>
 
-          <div className={`d-flex align-items-center gap-3 ${styles.rightActions}`}>
+          <div
+            className={`d-flex align-items-center gap-3 ${styles.rightActions}`}
+          >
             <div className={styles.searchWrapper}>
               <form onSubmit={handleSubmit} className={styles.searchForm}>
                 <input
@@ -270,7 +286,9 @@ export default function Navbar() {
                       </button>
                     ))
                   ) : (
-                    <div className={styles.noSearchResult}>No matching courses</div>
+                    <div className={styles.noSearchResult}>
+                      No matching courses
+                    </div>
                   )}
                 </div>
               )}
