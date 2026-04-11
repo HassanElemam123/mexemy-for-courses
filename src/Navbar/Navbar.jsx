@@ -107,7 +107,7 @@ export default function Navbar() {
         </button>
 
         <div
-          className="collapse navbar-collapse"
+          className="collapse navbar-collapse pt-3"
           id="mainNav"
           ref={navCollapseRef}
         >
