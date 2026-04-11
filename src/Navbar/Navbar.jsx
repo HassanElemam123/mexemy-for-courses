@@ -156,7 +156,7 @@ export default function Navbar() {
 
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle fw-bold"
+                className={`nav-link dropdown-toggle fw-bold ${styles.linkColor} ${styles.dropdownTrigger}`}
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -164,30 +164,34 @@ export default function Navbar() {
               >
                 Resource
               </a>
-              <ul className="dropdown-menu">
+
+              <ul className={`dropdown-menu ${styles.dropdownMenu}`}>
                 <li>
                   <NavLink
                     to="/resource/data"
                     onClick={closeMobileMenu}
                     className={({ isActive }) =>
-                      `dropdown-item fw-bold ${styles.linkColor} ${
+                      `${styles.dropdownItem} ${
                         isActive ? styles.activeDropdownItem : ""
                       }`
                     }
                   >
+                    <span className={styles.itemDot}></span>
                     Data
                   </NavLink>
                 </li>
+
                 <li>
                   <NavLink
                     to="/resource/about"
                     onClick={closeMobileMenu}
                     className={({ isActive }) =>
-                      `dropdown-item fw-bold ${styles.linkColor} ${
+                      `${styles.dropdownItem} ${
                         isActive ? styles.activeDropdownItem : ""
                       }`
                     }
                   >
+                    <span className={styles.itemDot}></span>
                     About
                   </NavLink>
                 </li>
@@ -210,7 +214,7 @@ export default function Navbar() {
 
             <li className="nav-item dropdown fw-bold">
               <a
-                className="nav-link dropdown-toggle"
+                className={`nav-link dropdown-toggle ${styles.linkColor} ${styles.dropdownTrigger}`}
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -218,31 +222,50 @@ export default function Navbar() {
               >
                 Affiliate
               </a>
-              <ul className="dropdown-menu fw-bold">
+
+              <ul className={`dropdown-menu ${styles.dropdownMenu}`}>
                 <li>
                   <NavLink
                     to="/affiliate/login"
                     onClick={closeMobileMenu}
                     className={({ isActive }) =>
-                      `dropdown-item fw-bold ${styles.linkColor} ${
+                      `${styles.dropdownItem} ${
                         isActive ? styles.activeDropdownItem : ""
                       }`
                     }
                   >
+                    <span className={styles.itemDot}></span>
                     Login
                   </NavLink>
                 </li>
+
                 <li>
                   <NavLink
                     to="/affiliate/join"
                     onClick={closeMobileMenu}
                     className={({ isActive }) =>
-                      `dropdown-item fw-bold ${styles.linkColor} ${
+                      `${styles.dropdownItem} ${
                         isActive ? styles.activeDropdownItem : ""
                       }`
                     }
                   >
+                    <span className={styles.itemDot}></span>
                     Join
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink
+                    to="/affiliate/instructors"
+                    onClick={closeMobileMenu}
+                    className={({ isActive }) =>
+                      `${styles.dropdownItem} ${
+                        isActive ? styles.activeDropdownItem : ""
+                      }`
+                    }
+                  >
+                    <span className={styles.itemDot}></span>
+                    Instructors
                   </NavLink>
                 </li>
               </ul>

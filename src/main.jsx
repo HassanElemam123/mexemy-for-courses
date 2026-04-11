@@ -27,6 +27,7 @@ import WebDesignCourse from "./pages/Courses/WebDesignCourse/WebDesignCourse.jsx
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import Blogs from "./pages/Blogs/Blogs";
 import SingleBlog from "./pages/Blogs/SingleBlog";
+import Instructors from "./pages/Instructors/Instructors";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
       { path: "/terms", element: <Terms /> },
       { path: "/affiliate/join", element: <AffRegister /> },
       { path: "/affiliate/login", element: <AfLogin /> },
+      { path: "/affiliate/instructors", element: <Instructors /> },
       { path: "/forgot-password", element: <LostPassword /> },
       { path: "/faq", element: <Faq /> },
       { path: "/events", element: <Events /> },
