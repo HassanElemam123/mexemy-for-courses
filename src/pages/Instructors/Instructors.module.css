@@ -10,7 +10,7 @@
 
   min-height: 100vh;
   padding: 130px 0 80px;
-  background: linear-gradient(180deg, #fbfaff 0%, #ffffff 45%, #faf7ff 100%);
+  background: #ffffff;
 }
 
 .heroBox {
@@ -21,12 +21,15 @@
 }
 
 .heroContent,
-.heroStats {
-  background: linear-gradient(
-    135deg,
-    rgba(108, 76, 241, 0.1),
-    rgba(36, 16, 79, 0.08)
-  );
+.heroStats,
+.featuredCard,
+.card,
+.infoBox,
+.courseCard,
+.bottomBox,
+.singleHero,
+.notFoundBox {
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: 28px;
   box-shadow: var(--shadow);
@@ -34,6 +37,11 @@
 
 .heroContent {
   padding: 42px;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 76, 241, 0.1),
+    rgba(36, 16, 79, 0.08)
+  );
 }
 
 .heroStats {
@@ -41,9 +49,15 @@
   display: grid;
   gap: 16px;
   align-content: start;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 76, 241, 0.08),
+    rgba(36, 16, 79, 0.06)
+  );
 }
 
-.heroBadge {
+.heroBadge,
+.courseBadge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,34 +68,59 @@
   border-radius: 999px;
   font-size: 0.92rem;
   font-weight: 700;
+}
+
+.heroBadge {
   margin-bottom: 18px;
 }
 
-.heroTitle {
+.heroTitle,
+.singleTitle {
   color: var(--primaryDark);
-  font-size: 3.05rem;
   line-height: 1.12;
   font-weight: 800;
+}
+
+.heroTitle {
+  font-size: 3rem;
   max-width: 780px;
   margin-bottom: 16px;
 }
 
-.heroText {
+.singleTitle {
+  font-size: 2.9rem;
+  margin-bottom: 8px;
+}
+
+.heroText,
+.singleSummary,
+.featuredText,
+.cardBio,
+.infoBox p,
+.bottomBox p,
+.notFoundText,
+.courseCard p,
+.sectionHead p {
   color: var(--textMuted);
+  line-height: 1.9;
+}
+
+.heroText {
   font-size: 1.06rem;
-  line-height: 1.95;
   max-width: 800px;
   margin-bottom: 24px;
 }
 
-.heroActions {
+.heroActions,
+.bottomActions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
 }
 
 .primaryBtn,
-.secondaryBtn {
+.secondaryBtn,
+.profileBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -92,13 +131,15 @@
   transition: all 0.25s ease;
 }
 
-.primaryBtn {
+.primaryBtn,
+.profileBtn {
   background: var(--primary);
   color: var(--white);
   border: 1px solid var(--primary);
 }
 
-.primaryBtn:hover {
+.primaryBtn:hover,
+.profileBtn:hover {
   background: #5938e6;
   border-color: #5938e6;
   color: var(--white);
@@ -117,14 +158,16 @@
   transform: translateY(-2px);
 }
 
-.statCard {
+.statCard,
+.singleStatCard {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 20px;
 }
 
-.statCard strong {
+.statCard strong,
+.singleStatCard strong {
   display: block;
   color: var(--primaryDark);
   font-size: 1.5rem;
@@ -132,13 +175,13 @@
   margin-bottom: 6px;
 }
 
-.statCard span {
+.statCard span,
+.singleStatCard span {
   color: var(--textMuted);
   font-weight: 600;
 }
 
-.sectionHead,
-.sectionHeadAlt {
+.sectionHead {
   display: flex;
   justify-content: space-between;
   align-items: end;
@@ -155,41 +198,50 @@
 }
 
 .sectionHead h2,
-.sectionHeadAlt h2,
-.bottomBox h2 {
+.infoBox h2,
+.bottomBox h2,
+.notFoundTitle {
   color: var(--primaryDark);
   font-size: 2rem;
   font-weight: 800;
   margin: 0;
 }
 
-.sectionHead p,
-.sectionHeadAlt p,
-.bottomBox p {
-  color: var(--textMuted);
-  line-height: 1.85;
+.sectionHead p {
   max-width: 470px;
   margin: 0;
 }
 
-.featuredCard {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 28px;
+.featuredCard,
+.card,
+.courseCard {
   padding: 28px;
   height: 100%;
-  box-shadow: var(--shadow);
 }
 
-.featuredTop {
+.featuredTop,
+.cardTop,
+.singleTop {
   display: flex;
   align-items: center;
   gap: 18px;
+}
+
+.featuredTop {
   margin-bottom: 18px;
 }
 
+.cardTop {
+  margin-bottom: 16px;
+}
+
+.singleTop {
+  margin-bottom: 24px;
+}
+
 .avatarLg,
-.avatarSm {
+.avatarSm,
+.avatarXl {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -214,22 +266,45 @@
   font-size: 0.95rem;
 }
 
-.featuredTop h3 {
+.avatarXl {
+  width: 110px;
+  height: 110px;
+  border-radius: 28px;
+  font-size: 1.5rem;
+}
+
+.featuredTop h3,
+.cardName,
+.courseCard h3 {
   color: var(--primaryDark);
-  font-size: 1.45rem;
   font-weight: 800;
+}
+
+.featuredTop h3 {
+  font-size: 1.45rem;
   margin-bottom: 6px;
 }
 
-.featuredTop p {
+.featuredTop p,
+.cardRole,
+.singleRole {
   color: var(--primary);
   font-weight: 700;
   margin: 0;
 }
 
-.featuredText {
-  color: var(--textMuted);
-  line-height: 1.9;
+.cardName {
+  font-size: 1.2rem;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.singleRole {
+  font-size: 1.08rem;
+}
+
+.featuredText,
+.cardBio {
   margin-bottom: 18px;
 }
 
@@ -239,7 +314,8 @@
   gap: 10px;
 }
 
-.courseTags span {
+.courseTags span,
+.trackChip {
   background: var(--primarySoft);
   color: var(--primaryDark);
   border: 1px solid var(--border);
@@ -249,205 +325,178 @@
   font-weight: 700;
 }
 
-.metaGrid {
-  margin-top: 22px;
+.metaGrid,
+.cardMeta,
+.singleStats,
+.courseMeta,
+.infoList {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
-.metaGrid div {
+.metaGrid {
+  margin-top: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 22px;
+}
+
+.cardMeta {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.singleStats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.courseMeta {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.infoList {
+  grid-template-columns: 1fr;
+}
+
+.metaGrid div,
+.cardMetaItem,
+.courseMeta div,
+.infoList div {
   background: #faf8ff;
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 14px;
 }
 
-.metaGrid strong {
+.metaGrid strong,
+.cardMetaItem strong,
+.courseMeta strong,
+.infoList strong {
   display: block;
   color: var(--primaryDark);
   font-size: 0.9rem;
   margin-bottom: 6px;
 }
 
-.metaGrid span {
+.metaGrid span,
+.cardMetaItem span,
+.courseMeta span,
+.infoList span {
   color: var(--textMuted);
   font-size: 0.95rem;
   line-height: 1.7;
 }
 
-.card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 26px;
-  height: 100%;
-  box-shadow: var(--shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(43, 18, 98, 0.12);
-}
-
-.cardTop {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.cardName {
-  color: var(--primaryDark);
-  font-size: 1.2rem;
-  line-height: 1.35;
-  font-weight: 800;
-  margin-bottom: 6px;
-}
-
-.cardRole {
-  color: var(--primary);
-  font-size: 0.95rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.cardBio {
-  color: var(--textMuted);
-  font-size: 1rem;
-  line-height: 1.9;
-  margin-bottom: 18px;
-}
-
-.cardMeta {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.cardMetaItem {
-  background: #faf8ff;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 12px;
-}
-
-.cardMetaItem span {
-  display: block;
-  color: var(--textMuted);
-  font-size: 0.78rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.cardMetaItem strong {
-  color: var(--primaryDark);
-  font-size: 0.9rem;
-  line-height: 1.5;
+.teachesBox,
+.styleBox {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
 }
 
 .teachesBox {
-  border-top: 1px solid var(--border);
-  padding-top: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
-.teachesLabel,
-.styleLabel {
+.teachesLabel {
   display: inline-block;
   color: var(--primary);
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.styleBox {
-  border-top: 1px solid var(--border);
-  padding-top: 16px;
+.singleHeader {
+  margin-bottom: 36px;
 }
 
-.styleBox p {
-  margin: 0;
-  color: var(--textMain);
-  line-height: 1.8;
-}
-
-.trackSection {
-  margin-top: 46px;
-  background: linear-gradient(
-    135deg,
-    rgba(108, 76, 241, 0.08),
-    rgba(36, 16, 79, 0.06)
-  );
-  border: 1px solid var(--border);
-  border-radius: 28px;
-  padding: 32px;
-  box-shadow: var(--shadow);
-}
-
-.trackGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.trackChip {
-  background: var(--white);
-  color: var(--primaryDark);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-size: 0.92rem;
+.backLink {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--primary);
   font-weight: 700;
+  margin-bottom: 18px;
 }
 
-.bottomBox {
-  margin-top: 42px;
+.backLink:hover {
+  color: var(--primaryDark);
+}
+
+.singleHero {
+  padding: 36px;
   background: linear-gradient(
     135deg,
     rgba(108, 76, 241, 0.1),
     rgba(36, 16, 79, 0.08)
   );
-  border: 1px solid var(--border);
-  border-radius: 28px;
+}
+
+.infoBox {
+  padding: 28px;
+  height: 100%;
+}
+
+.courseCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.courseLessons {
+  color: var(--textMuted);
+  font-weight: 700;
+}
+
+.bottomBox {
+  margin-top: 42px;
   padding: 34px;
-  box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 76, 241, 0.1),
+    rgba(36, 16, 79, 0.08)
+  );
 }
 
-.bottomActions {
-  flex-shrink: 0;
+.notFoundBox {
+  max-width: 720px;
+  padding: 40px;
+}
+
+.notFoundText {
+  margin-bottom: 22px;
 }
 
 @media (max-width: 1199.98px) {
-  .heroBox {
+  .heroBox,
+  .singleStats {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 991.98px) {
-  .heroTitle {
-    font-size: 2.35rem;
+  .heroTitle,
+  .singleTitle {
+    font-size: 2.2rem;
   }
 
   .sectionHead,
-  .sectionHeadAlt,
-  .bottomBox {
+  .bottomBox,
+  .singleTop {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .sectionHead p,
-  .sectionHeadAlt p,
-  .bottomBox p {
+  .sectionHead p {
     max-width: 100%;
   }
 
-  .cardMeta {
+  .cardMeta,
+  .courseMeta,
+  .metaGrid {
     grid-template-columns: 1fr;
   }
 }
@@ -461,27 +510,36 @@
   .heroStats,
   .featuredCard,
   .card,
-  .trackSection,
-  .bottomBox {
+  .infoBox,
+  .courseCard,
+  .bottomBox,
+  .singleHero,
+  .notFoundBox {
     padding: 24px 20px;
   }
 
-  .heroTitle {
-    font-size: 1.95rem;
+  .heroTitle,
+  .singleTitle {
+    font-size: 1.9rem;
   }
 
   .sectionHead h2,
-  .sectionHeadAlt h2,
-  .bottomBox h2 {
+  .infoBox h2,
+  .bottomBox h2,
+  .notFoundTitle {
     font-size: 1.55rem;
   }
 
   .featuredTop,
-  .cardTop {
+  .cardTop,
+  .courseCardTop {
     align-items: flex-start;
+    flex-direction: column;
   }
 
-  .metaGrid {
-    grid-template-columns: 1fr;
+  .avatarXl {
+    width: 88px;
+    height: 88px;
+    font-size: 1.2rem;
   }
 }

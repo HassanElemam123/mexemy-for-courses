@@ -2,11 +2,9 @@ import { Link } from "react-router-dom";
 import styles from "./Instructors.module.css";
 import { instructors } from "./instructorsData";
 
-const featuredNames = ["Simon & Olivia Mia", "Mohamed Tarek", "Mina Adel"];
-
 function getInitials(name) {
   return name
-    .replace("&", " ")
+    .replace(/&/g, " ")
     .split(" ")
     .filter(Boolean)
     .slice(0, 2)
@@ -15,11 +13,17 @@ function getInitials(name) {
 }
 
 export default function Instructors() {
-  const featuredInstructors = instructors.filter((item) =>
-    featuredNames.includes(item.name),
+  const totalCourses = instructors.reduce(
+    (sum, instructor) => sum + instructor.courseCount,
+    0,
   );
 
-  const allTracks = [...new Set(instructors.flatMap((item) => item.courses))];
+  const totalLessons = instructors.reduce(
+    (sum, instructor) => sum + instructor.totalLessons,
+    0,
+  );
+
+  const featured = instructors.slice(0, 3);
 
   return (
     <section className={styles.instructorsPage}>
@@ -29,13 +33,13 @@ export default function Instructors() {
             <span className={styles.heroBadge}>Affiliate Instructors</span>
 
             <h1 className={styles.heroTitle}>
-              Learn from the instructors behind your courses
+              Meet the instructors behind the courses
             </h1>
 
             <p className={styles.heroText}>
-              This page brings together the real instructor names already used
-              in your course data and presents them in a larger, more complete
-              experience that matches the visual identity of the site.
+              Explore the teaching team behind Mexemy. Every instructor here has
+              a dedicated profile page with their teaching style, course list,
+              and a more complete introduction to what they help learners build.
             </p>
 
             <div className={styles.heroActions}>
@@ -56,32 +60,31 @@ export default function Instructors() {
             </div>
 
             <div className={styles.statCard}>
-              <strong>{allTracks.length}</strong>
-              <span>Teaching Tracks</span>
+              <strong>{totalCourses}</strong>
+              <span>Courses</span>
             </div>
 
             <div className={styles.statCard}>
-              <strong>Beginner → Advanced</strong>
-              <span>Different Levels</span>
+              <strong>{totalLessons}+</strong>
+              <span>Total Lessons</span>
             </div>
           </div>
         </div>
 
         <div className={styles.sectionHead}>
           <div>
-            <span className={styles.sectionLabel}>Featured Mentors</span>
-            <h2>Highlighted instructors from the platform</h2>
+            <span className={styles.sectionLabel}>Featured Profiles</span>
+            <h2>Start with a few highlighted mentors</h2>
           </div>
 
           <p>
-            A few standout teaching profiles that represent the tone of the
-            learning experience across design, video, and product-focused
-            training.
+            Each instructor profile is now a separate page, so learners can know
+            the person behind the teaching before jumping into the course.
           </p>
         </div>
 
         <div className="row g-4 mb-5">
-          {featuredInstructors.map((instructor) => (
+          {featured.map((instructor) => (
             <div className="col-lg-4" key={instructor.id}>
               <article className={styles.featuredCard}>
                 <div className={styles.featuredTop}>
@@ -95,32 +98,42 @@ export default function Instructors() {
                   </div>
                 </div>
 
-                <p className={styles.featuredText}>{instructor.tagline}</p>
+                <p className={styles.featuredText}>{instructor.summary}</p>
 
                 <div className={styles.courseTags}>
-                  {instructor.courses.map((course) => (
-                    <span key={course}>{course}</span>
+                  {instructor.tracks.map((track) => (
+                    <span key={track}>{track}</span>
                   ))}
                 </div>
 
                 <div className={styles.metaGrid}>
                   <div>
-                    <strong>Language</strong>
-                    <span>{instructor.language}</span>
+                    <strong>Experience</strong>
+                    <span>{instructor.experience}</span>
                   </div>
+
                   <div>
-                    <strong>Level</strong>
-                    <span>{instructor.level}</span>
+                    <strong>Courses</strong>
+                    <span>{instructor.courseCount}</span>
                   </div>
+
                   <div>
-                    <strong>Duration</strong>
-                    <span>{instructor.duration}</span>
+                    <strong>Lessons</strong>
+                    <span>{instructor.totalLessons}</span>
                   </div>
+
                   <div>
                     <strong>Style</strong>
                     <span>{instructor.teachingStyle}</span>
                   </div>
                 </div>
+
+                <Link
+                  to={`/affiliate/instructors/${instructor.slug}`}
+                  className={styles.profileBtn}
+                >
+                  View Full Profile
+                </Link>
               </article>
             </div>
           ))}
@@ -132,10 +145,7 @@ export default function Instructors() {
             <h2>The full teaching team</h2>
           </div>
 
-          <p>
-            A larger directory view that gives every instructor a place on the
-            page and keeps the design aligned with the rest of the site.
-          </p>
+          <p>Browse every instructor and open a dedicated page for each one.</p>
         </div>
 
         <div className="row g-4">
@@ -153,22 +163,22 @@ export default function Instructors() {
                   </div>
                 </div>
 
-                <p className={styles.cardBio}>{instructor.tagline}</p>
+                <p className={styles.cardBio}>{instructor.summary}</p>
 
                 <div className={styles.cardMeta}>
                   <div className={styles.cardMetaItem}>
-                    <span>Course Level</span>
-                    <strong>{instructor.level}</strong>
+                    <span>Experience</span>
+                    <strong>{instructor.experience}</strong>
                   </div>
 
                   <div className={styles.cardMetaItem}>
-                    <span>Language</span>
-                    <strong>{instructor.language}</strong>
+                    <span>Courses</span>
+                    <strong>{instructor.courseCount}</strong>
                   </div>
 
                   <div className={styles.cardMetaItem}>
-                    <span>Duration</span>
-                    <strong>{instructor.duration}</strong>
+                    <span>Lessons</span>
+                    <strong>{instructor.totalLessons}</strong>
                   </div>
                 </div>
 
@@ -176,60 +186,21 @@ export default function Instructors() {
                   <span className={styles.teachesLabel}>Teaches</span>
 
                   <div className={styles.courseTags}>
-                    {instructor.courses.map((course) => (
-                      <span key={course}>{course}</span>
+                    {instructor.tracks.map((track) => (
+                      <span key={track}>{track}</span>
                     ))}
                   </div>
                 </div>
 
-                <div className={styles.styleBox}>
-                  <span className={styles.styleLabel}>Teaching Style</span>
-                  <p>{instructor.teachingStyle}</p>
-                </div>
+                <Link
+                  to={`/affiliate/instructors/${instructor.slug}`}
+                  className={styles.profileBtn}
+                >
+                  Open Profile
+                </Link>
               </article>
             </div>
           ))}
-        </div>
-
-        <div className={styles.trackSection}>
-          <div className={styles.sectionHeadAlt}>
-            <div>
-              <span className={styles.sectionLabel}>Teaching Areas</span>
-              <h2>Skills covered by the instructors page</h2>
-            </div>
-
-            <p>
-              These teaching areas are taken from the actual course topics
-              already present in your project.
-            </p>
-          </div>
-
-          <div className={styles.trackGrid}>
-            {allTracks.map((track) => (
-              <span key={track} className={styles.trackChip}>
-                {track}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.bottomBox}>
-          <div>
-            <span className={styles.sectionLabel}>Why this page works</span>
-            <h2>A larger page that feels native to the project</h2>
-            <p>
-              Instead of a small placeholder layout, this version makes the
-              instructors section feel like a real part of the platform: more
-              content, more structure, and colors that stay consistent with the
-              rest of Mexemy.
-            </p>
-          </div>
-
-          <div className={styles.bottomActions}>
-            <Link to="/about" className={styles.primaryBtn}>
-              Learn More About Us
-            </Link>
-          </div>
         </div>
       </div>
     </section>

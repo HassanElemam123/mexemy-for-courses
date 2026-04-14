@@ -11,6 +11,7 @@ const latestCourse = {
   cta: "Enroll Now",
   img: "/video-editing.png",
   video: "https://www.youtube.com/embed/5gzWSz6xmwM?si=EZQdrzboOI6ickP6",
+  status: "active",
 };
 
 const middleHero = {
@@ -63,15 +64,35 @@ const sections = [
         video: "https://www.youtube.com/embed/rIPOJG3F3Vg",
       },
       { id: "dd2", title: "UI/UX Design", img: "/Ui-Ux.png", status: "soon" },
-      { id: "dd3", title: "Shopify Ecommerce", img: "/shopify.png", status: "soon" },
-      { id: "dd4", title: "WordPress & DIVI", img: "/DIVI.png", status: "soon" },
+      {
+        id: "dd3",
+        title: "Shopify Ecommerce",
+        img: "/shopify.png",
+        status: "soon",
+      },
+      {
+        id: "dd4",
+        title: "WordPress & DIVI",
+        img: "/DIVI.png",
+        status: "soon",
+      },
     ],
   },
   {
     title: "Marketplace",
     items: [
-      { id: "mp1", title: "Fiverr Marketplace", img: "/fiverr.png", status: "soon" },
-      { id: "mp2", title: "Upwork Marketplace", img: "/upwork.png", status: "soon" },
+      {
+        id: "mp1",
+        title: "Fiverr Marketplace",
+        img: "/fiverr.png",
+        status: "soon",
+      },
+      {
+        id: "mp2",
+        title: "Upwork Marketplace",
+        img: "/upwork.png",
+        status: "soon",
+      },
     ],
   },
   {
@@ -84,9 +105,24 @@ const sections = [
         status: "active",
         video: "https://www.youtube.com/embed/JpOlIzTVRic?si=wrQalz0iVvnbJa2f",
       },
-      { id: "ed2", title: "Digital Art & Illustration", img: "/art.png", status: "soon" },
-      { id: "ed3", title: "3D Animation", img: "/animation.png", status: "soon" },
-      { id: "ed4", title: "Video Editing Part 2", img: "/video-editing.png", status: "soon" },
+      {
+        id: "ed2",
+        title: "Digital Art & Illustration",
+        img: "/art.png",
+        status: "soon",
+      },
+      {
+        id: "ed3",
+        title: "3D Animation",
+        img: "/animation.png",
+        status: "soon",
+      },
+      {
+        id: "ed4",
+        title: "Video Editing Part 2",
+        img: "/video-editing.png",
+        status: "soon",
+      },
     ],
   },
 ];
@@ -95,19 +131,49 @@ const extraSections = [
   {
     title: "Digital Marketing",
     items: [
-      { id: "dm1", title: "Facebook Marketing", img: "/facebook-marketing.png", status: "soon" },
+      {
+        id: "dm1",
+        title: "Facebook Marketing",
+        img: "/facebook-marketing.png",
+        status: "soon",
+      },
       { id: "dm2", title: "SEO", img: "/SEO.png", status: "soon" },
-      { id: "dm3", title: "Email marketing", img: "/e-mail-market.png", status: "soon" },
+      {
+        id: "dm3",
+        title: "Email marketing",
+        img: "/e-mail-market.png",
+        status: "soon",
+      },
       { id: "dm4", title: "Google Ad", img: "/google-ad.png", status: "soon" },
     ],
   },
   {
     title: "Creative & Passion",
     items: [
-      { id: "cp1", title: "Photography", img: "/photography.png", status: "soon" },
-      { id: "cp2", title: "Drawing & Art", img: "/drawing-art.png", status: "soon" },
-      { id: "cp3", title: "Content Creation", img: "/content-creation.png", status: "soon" },
-      { id: "cp4", title: "Ethical Hacking", img: "/ethical-hacking.png", status: "soon" },
+      {
+        id: "cp1",
+        title: "Photography",
+        img: "/photography.png",
+        status: "soon",
+      },
+      {
+        id: "cp2",
+        title: "Drawing & Art",
+        img: "/drawing-art.png",
+        status: "soon",
+      },
+      {
+        id: "cp3",
+        title: "Content Creation",
+        img: "/content-creation.png",
+        status: "soon",
+      },
+      {
+        id: "cp4",
+        title: "Ethical Hacking",
+        img: "/ethical-hacking.png",
+        status: "soon",
+      },
     ],
   },
   {
@@ -120,25 +186,56 @@ const extraSections = [
         status: "active",
         video: "https://www.youtube.com/embed/q4OWKoUUjdY?start=7",
       },
-      { id: "fc2", title: "Microsoft Office", img: "/office.png", status: "soon" },
+      {
+        id: "fc2",
+        title: "Microsoft Office",
+        img: "/office.png",
+        status: "soon",
+      },
       { id: "fc3", title: "Quran Shikkha", img: "/quran.png", status: "soon" },
       { id: "fc4", title: "ChatGpt Ai", img: "/chatgpt.png", status: "soon" },
     ],
   },
 ];
 
+function isCourseComingSoon(item = {}) {
+  const status = String(item.status || "")
+    .toLowerCase()
+    .trim();
+
+  return (
+    item.isComingSoon === true ||
+    item.comingSoon === true ||
+    status === "soon" ||
+    status === "coming soon" ||
+    status === "coming_soon" ||
+    status === "upcoming"
+  );
+}
+
 function CourseCard({ item, onOpenVideo }) {
-  const isActive = item.status === "active";
+  const comingSoon = isCourseComingSoon(item);
   const { toggleCart, isInCart } = useCart();
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
-  const inCart = isInCart(item.id);
+  const inCart = !comingSoon && isInCart(item.id);
 
   const goToCourse = () => {
-    navigate(`/course/${item.id}`, { state: { course: item } });
+    if (comingSoon) return;
+
+    navigate(`/course/${item.id}`, {
+      state: {
+        course: {
+          ...item,
+          isComingSoon: false,
+        },
+      },
+    });
   };
 
   const handleEnroll = () => {
+    if (comingSoon) return;
+
     if (!isLoggedIn) {
       navigate("/st-login", {
         state: { from: { pathname: `/course/${item.id}` } },
@@ -151,6 +248,11 @@ function CourseCard({ item, onOpenVideo }) {
     }
   };
 
+  const handleCartClick = () => {
+    if (comingSoon) return;
+    toggleCart(item);
+  };
+
   return (
     <div className={styles.courseCard}>
       <button
@@ -158,6 +260,8 @@ function CourseCard({ item, onOpenVideo }) {
         className={styles.coverBtn}
         onClick={goToCourse}
         aria-label={item.title}
+        disabled={comingSoon}
+        style={comingSoon ? { cursor: "not-allowed", opacity: 0.9 } : undefined}
       >
         <div className={styles.courseMedia}>
           <img src={item.img} alt={item.title} loading="lazy" />
@@ -165,12 +269,24 @@ function CourseCard({ item, onOpenVideo }) {
       </button>
 
       <div className={styles.courseBody}>
-        <button type="button" className={styles.courseTitleBtn} onClick={goToCourse}>
+        <button
+          type="button"
+          className={styles.courseTitleBtn}
+          onClick={goToCourse}
+          disabled={comingSoon}
+          style={
+            comingSoon ? { cursor: "not-allowed", opacity: 0.8 } : undefined
+          }
+        >
           {item.title}
         </button>
 
         <div className={styles.courseActions}>
-          {isActive ? (
+          {comingSoon ? (
+            <button type="button" className={styles.soonBtn} disabled>
+              Coming soon
+            </button>
+          ) : (
             <>
               <button
                 type="button"
@@ -186,15 +302,11 @@ function CourseCard({ item, onOpenVideo }) {
               <button
                 type="button"
                 className={inCart ? styles.removeCartBtn : styles.cartBtn}
-                onClick={() => toggleCart(item)}
+                onClick={handleCartClick}
               >
                 {inCart ? "Remove From Cart" : "Add To Cart"}
               </button>
             </>
-          ) : (
-            <button type="button" className={styles.soonBtn} disabled>
-              Coming soon
-            </button>
           )}
         </div>
       </div>
@@ -219,7 +331,7 @@ export default function LastCourses() {
       .map((sec) => ({
         ...sec,
         items: sec.items.filter((item) =>
-          item.title.toLowerCase().includes(searchQuery)
+          item.title.toLowerCase().includes(searchQuery),
         ),
       }))
       .filter((sec) => sec.items.length > 0);
@@ -232,7 +344,7 @@ export default function LastCourses() {
       .map((sec) => ({
         ...sec,
         items: sec.items.filter((item) =>
-          item.title.toLowerCase().includes(searchQuery)
+          item.title.toLowerCase().includes(searchQuery),
         ),
       }))
       .filter((sec) => sec.items.length > 0);
@@ -288,7 +400,11 @@ export default function LastCourses() {
                   onClick={handleLatestEnroll}
                 >
                   {latestCourse.cta}
-                  <img src="/icons/arrow.svg" alt="" className={styles.yellowDot} />
+                  <img
+                    src="/icons/arrow.svg"
+                    alt=""
+                    className={styles.yellowDot}
+                  />
                 </button>
               </div>
 
@@ -399,9 +515,10 @@ export default function LastCourses() {
                   <div className="container">
                     <div className={styles.infoContent}>
                       <p className={styles.infoText}>
-                        All of our courses are currently under review for recording, and
-                        they will soon be published on our platform one by one. Stay
-                        connected with us by following our Facebook and YouTube channels
+                        All of our courses are currently under review for
+                        recording, and they will soon be published on our
+                        platform one by one. Stay connected with us by following
+                        our Facebook and YouTube channels
                       </p>
 
                       <div className={styles.socialRow}>
@@ -436,7 +553,10 @@ export default function LastCourses() {
 
       {open && (
         <div className={styles.modalOverlay} onClick={closeVideo}>
-          <div className={styles.modalCard} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.modalCard}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={styles.modalTop}>
               <div className={styles.modalTitle}>{videoTitle}</div>
               <button

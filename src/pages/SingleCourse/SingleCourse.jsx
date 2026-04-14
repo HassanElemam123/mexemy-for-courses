@@ -4,6 +4,59 @@ import { useCart } from "../../CartContext";
 import { useAuth } from "../../AuthContext.jsx";
 import styles from "./SingleCourse.module.css";
 
+const comingSoonIds = new Set([
+  "dd2",
+  "dd3",
+  "dd4",
+  "mp1",
+  "mp2",
+  "ed2",
+  "ed3",
+  "ed4",
+  "dm1",
+  "dm2",
+  "dm3",
+  "dm4",
+  "cp1",
+  "cp2",
+  "cp3",
+  "cp4",
+  "fc2",
+  "fc3",
+  "fc4",
+]);
+
+function isCourseComingSoon(course = {}) {
+  const statusText = [
+    course.status,
+    course.releaseStatus,
+    course.availability,
+    course.courseStatus,
+    course.badge,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  return Boolean(
+    comingSoonIds.has(course.id) ||
+    course.isComingSoon === true ||
+    course.comingSoon === true ||
+    course.isAvailable === false ||
+    course.available === false ||
+    course.canAddToCart === false ||
+    statusText.includes("coming soon") ||
+    statusText.includes("coming_soon") ||
+    statusText.includes("upcoming") ||
+    statusText.includes("soon"),
+  );
+}
+
+function getCourseBadge(course = {}) {
+  if (isCourseComingSoon(course)) return "Coming Soon";
+  return course.level || "Beginner";
+}
+
 const fallbackCourses = {
   ac1: {
     id: "ac1",
@@ -417,8 +470,10 @@ const fallbackCourses = {
     level: "Beginner",
     lessons: 15,
     language: "Arabic",
-    description: "Learn how to create and optimize Facebook marketing campaigns.",
-    about: "This course covers page growth, ad basics, targeting, and content planning for Facebook.",
+    description:
+      "Learn how to create and optimize Facebook marketing campaigns.",
+    about:
+      "This course covers page growth, ad basics, targeting, and content planning for Facebook.",
     learn: [
       "Understand Facebook campaign basics",
       "Create simple campaigns",
@@ -437,8 +492,10 @@ const fallbackCourses = {
     level: "Intermediate",
     lessons: 18,
     language: "English & Arabic",
-    description: "Improve website visibility with practical search engine optimization techniques.",
-    about: "This course introduces SEO foundations including keywords, on-page optimization, and content structure.",
+    description:
+      "Improve website visibility with practical search engine optimization techniques.",
+    about:
+      "This course introduces SEO foundations including keywords, on-page optimization, and content structure.",
     learn: [
       "Understand SEO basics",
       "Do keyword research",
@@ -457,8 +514,10 @@ const fallbackCourses = {
     level: "Beginner",
     lessons: 13,
     language: "Arabic",
-    description: "Build effective email campaigns that engage audiences and increase conversions.",
-    about: "A practical course on writing emails, planning sequences, and improving open and click rates.",
+    description:
+      "Build effective email campaigns that engage audiences and increase conversions.",
+    about:
+      "A practical course on writing emails, planning sequences, and improving open and click rates.",
     learn: [
       "Write better marketing emails",
       "Build email sequences",
@@ -477,8 +536,10 @@ const fallbackCourses = {
     level: "Intermediate",
     lessons: 16,
     language: "Arabic",
-    description: "Learn how to launch and manage Google Ads campaigns for search and performance growth.",
-    about: "This course explains campaign structure, keywords, budget setup, ad copy, and optimization basics.",
+    description:
+      "Learn how to launch and manage Google Ads campaigns for search and performance growth.",
+    about:
+      "This course explains campaign structure, keywords, budget setup, ad copy, and optimization basics.",
     learn: [
       "Set up Google Ads campaigns",
       "Write ad copy",
@@ -497,8 +558,10 @@ const fallbackCourses = {
     level: "Beginner",
     lessons: 12,
     language: "Arabic",
-    description: "Learn the foundations of photography including framing, lighting, and composition.",
-    about: "This course helps beginners understand how to capture stronger images using simple photography rules.",
+    description:
+      "Learn the foundations of photography including framing, lighting, and composition.",
+    about:
+      "This course helps beginners understand how to capture stronger images using simple photography rules.",
     learn: [
       "Understand framing",
       "Use lighting better",
@@ -517,8 +580,10 @@ const fallbackCourses = {
     level: "Beginner",
     lessons: 14,
     language: "English & Arabic",
-    description: "Practice basic drawing techniques and artistic foundations to improve visual creativity.",
-    about: "A beginner course focused on sketching, form, composition, and artistic observation skills.",
+    description:
+      "Practice basic drawing techniques and artistic foundations to improve visual creativity.",
+    about:
+      "A beginner course focused on sketching, form, composition, and artistic observation skills.",
     learn: [
       "Practice drawing basics",
       "Understand shape and form",
@@ -537,8 +602,10 @@ const fallbackCourses = {
     level: "Beginner",
     lessons: 13,
     language: "Arabic",
-    description: "Learn how to plan, create, and present content effectively for modern platforms.",
-    about: "This course focuses on content ideas, publishing consistency, audience targeting, and visual presentation.",
+    description:
+      "Learn how to plan, create, and present content effectively for modern platforms.",
+    about:
+      "This course focuses on content ideas, publishing consistency, audience targeting, and visual presentation.",
     learn: [
       "Generate content ideas",
       "Plan content calendars",
@@ -557,8 +624,10 @@ const fallbackCourses = {
     level: "Advanced",
     lessons: 22,
     language: "English",
-    description: "Get introduced to cybersecurity fundamentals and ethical hacking concepts.",
-    about: "This course explains basic ethical hacking ideas, security awareness, and safe learning fundamentals.",
+    description:
+      "Get introduced to cybersecurity fundamentals and ethical hacking concepts.",
+    about:
+      "This course explains basic ethical hacking ideas, security awareness, and safe learning fundamentals.",
     learn: [
       "Understand ethical hacking basics",
       "Learn cybersecurity concepts",
@@ -578,6 +647,22 @@ const defaultCourseDetails = {
   description: "Course details will be updated soon.",
   about: "More detailed information about this course will be available soon.",
   learn: ["Course outline will be added soon."],
+};
+
+const blockedCardStyle = {
+  maxWidth: "900px",
+  margin: "40px auto 0",
+  padding: "32px 28px",
+  borderRadius: "24px",
+  background: "#ffffff",
+  border: "1px solid #e7defd",
+  boxShadow: "0 16px 40px rgba(43, 18, 98, 0.08)",
+};
+
+const blockedTextStyle = {
+  color: "#6f6a86",
+  lineHeight: 1.9,
+  marginBottom: "20px",
 };
 
 export default function SingleCourse() {
@@ -611,7 +696,52 @@ export default function SingleCourse() {
       defaultCourseDetails.learn,
   };
 
-  const inCart = isInCart(course.id);
+  const comingSoon = isCourseComingSoon(course);
+  const canWatchCourse = !comingSoon && Boolean(course.video);
+  const canAddToCart = !comingSoon;
+  const inCart = !comingSoon && isInCart(course.id);
+
+  if (comingSoon) {
+    return (
+      <section className={styles.page}>
+        <div className="container py-5">
+          <div style={blockedCardStyle}>
+            <span className={styles.badge}>{getCourseBadge(course)}</span>
+            <h1 className={styles.title} style={{ marginTop: "18px" }}>
+              {course.title}
+            </h1>
+            <p style={blockedTextStyle}>
+              This course is not available yet. It is still under preparation
+              and will be published later.
+            </p>
+
+            <div className={styles.metaGrid} style={{ marginBottom: "22px" }}>
+              <div>
+                <strong>Instructor:</strong> {course.instructor}
+              </div>
+              <div>
+                <strong>Duration:</strong> {course.duration}
+              </div>
+              <div>
+                <strong>Lessons:</strong> {course.lessons}
+              </div>
+              <div>
+                <strong>Language:</strong> {course.language}
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className={styles.backBtn}
+              onClick={() => navigate("/courses")}
+            >
+              Back to Courses
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const handleWatchClick = () => {
     if (!isLoggedIn) {
@@ -633,6 +763,11 @@ export default function SingleCourse() {
     setOpenVideo(true);
   };
 
+  const handleCartClick = () => {
+    if (!canAddToCart) return;
+    toggleCart(course);
+  };
+
   return (
     <section className={styles.page}>
       <div className="container py-5">
@@ -642,19 +777,27 @@ export default function SingleCourse() {
           </div>
 
           <div className={styles.contentCard}>
-            <span className={styles.badge}>{course.level}</span>
+            <span className={styles.badge}>{getCourseBadge(course)}</span>
             <h1 className={styles.title}>{course.title}</h1>
             <p className={styles.description}>{course.description}</p>
 
             <div className={styles.metaGrid}>
-              <div><strong>Instructor:</strong> {course.instructor}</div>
-              <div><strong>Duration:</strong> {course.duration}</div>
-              <div><strong>Lessons:</strong> {course.lessons}</div>
-              <div><strong>Language:</strong> {course.language}</div>
+              <div>
+                <strong>Instructor:</strong> {course.instructor}
+              </div>
+              <div>
+                <strong>Duration:</strong> {course.duration}
+              </div>
+              <div>
+                <strong>Lessons:</strong> {course.lessons}
+              </div>
+              <div>
+                <strong>Language:</strong> {course.language}
+              </div>
             </div>
 
             <div className={styles.actions}>
-              {course.video && (
+              {canWatchCourse && (
                 <button
                   type="button"
                   className={styles.primaryBtn}
@@ -667,7 +810,7 @@ export default function SingleCourse() {
               <button
                 type="button"
                 className={inCart ? styles.removeBtn : styles.cartBtn}
-                onClick={() => toggleCart(course)}
+                onClick={handleCartClick}
               >
                 {inCart ? "Remove From Cart" : "Add To Cart"}
               </button>
@@ -692,9 +835,15 @@ export default function SingleCourse() {
         </div>
       </div>
 
-      {openVideo && course.video && (
-        <div className={styles.modalOverlay} onClick={() => setOpenVideo(false)}>
-          <div className={styles.modalCard} onClick={(e) => e.stopPropagation()}>
+      {openVideo && canWatchCourse && (
+        <div
+          className={styles.modalOverlay}
+          onClick={() => setOpenVideo(false)}
+        >
+          <div
+            className={styles.modalCard}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className={styles.modalTop}>
               <div className={styles.modalTitle}>{course.title}</div>
               <button
