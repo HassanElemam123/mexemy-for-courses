@@ -29,6 +29,7 @@ import Blogs from "./pages/Blogs/Blogs";
 import SingleBlog from "./pages/Blogs/SingleBlog";
 import Instructors from "./pages/Instructors/Instructors";
 import SingleInstructor from "./pages/Instructors/SingleInstructor";
+import Alert from "./Alert/Toastify.jsx";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -105,6 +106,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <CartProvider>
+      <Alert />
       <RouterProvider router={router} />
     </CartProvider>
   </AuthProvider>,

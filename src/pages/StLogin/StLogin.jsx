@@ -4,11 +4,14 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { useAuth } from "../../AuthContext.jsx";
 import { demoAccounts } from "../../services/authApi.js";
+import { showSuccessToast } from "../../Alert/Toastify.jsx";
 import styles from "./StLogin.module.css";
 
 const loginSchema = Yup.object({
   identity: Yup.string().required("Username or email is required"),
-  password: Yup.string().min(6, "Min 6 characters").required("Password is required"),
+  password: Yup.string()
+    .min(6, "Min 6 characters")
+    .required("Password is required"),
   keepSignedIn: Yup.boolean(),
 });
 
@@ -44,11 +47,11 @@ export default function StLogin() {
                   const result = await login(
                     values.identity,
                     values.password,
-                    values.keepSignedIn
+                    values.keepSignedIn,
                   );
 
                   if (result.ok) {
-                    alert("Signed in successfully ✅");
+                    showSuccessToast("Login successful!");
                     resetForm();
                     navigate(from, { replace: true });
                   } else {
@@ -75,10 +78,14 @@ export default function StLogin() {
                         className={`btn btn-outline-secondary btn-sm ${styles.demoToggleBtn}`}
                         onClick={() => setShowDemoAccounts((prev) => !prev)}
                       >
-                        {showDemoAccounts ? "Hide test accounts" : "Show test accounts"}
+                        {showDemoAccounts
+                          ? "Hide test accounts"
+                          : "Show test accounts"}
                       </button>
 
-                      <small className={`text-muted ${styles.demoHint}`}>{demoHint}</small>
+                      <small className={`text-muted ${styles.demoHint}`}>
+                        {demoHint}
+                      </small>
                     </div>
 
                     {showDemoAccounts && (
@@ -120,7 +127,9 @@ export default function StLogin() {
                         name="identity"
                         placeholder="Username or Email Address"
                         className={`form-control ${styles.input} ${
-                          touched.identity && errors.identity ? "is-invalid" : ""
+                          touched.identity && errors.identity
+                            ? "is-invalid"
+                            : ""
                         }`}
                         value={values.identity}
                         onChange={(e) => {
@@ -130,7 +139,9 @@ export default function StLogin() {
                         onBlur={handleBlur}
                       />
                       {touched.identity && errors.identity && (
-                        <div className="invalid-feedback">{errors.identity}</div>
+                        <div className="invalid-feedback">
+                          {errors.identity}
+                        </div>
                       )}
                     </div>
 
@@ -140,7 +151,9 @@ export default function StLogin() {
                         name="password"
                         placeholder="Password"
                         className={`form-control ${styles.input} ${
-                          touched.password && errors.password ? "is-invalid" : ""
+                          touched.password && errors.password
+                            ? "is-invalid"
+                            : ""
                         }`}
                         value={values.password}
                         onChange={(e) => {
@@ -150,7 +163,9 @@ export default function StLogin() {
                         onBlur={handleBlur}
                       />
                       {touched.password && errors.password && (
-                        <div className="invalid-feedback">{errors.password}</div>
+                        <div className="invalid-feedback">
+                          {errors.password}
+                        </div>
                       )}
                     </div>
 
@@ -181,7 +196,10 @@ export default function StLogin() {
                         </label>
                       </div>
 
-                      <NavLink to="/forgot-password" className={styles.forgotLink}>
+                      <NavLink
+                        to="/forgot-password"
+                        className={styles.forgotLink}
+                      >
                         Forgot?
                       </NavLink>
                     </div>

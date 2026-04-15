@@ -79,7 +79,7 @@
 .removeBtn,
 .backBtn {
   border: none;
-  border-radius: 50%;
+  border-radius: 15px;
   padding: 12px 18px;
   font-weight: 700;
   cursor: pointer;
@@ -106,7 +106,7 @@
 }
 
 .removeBtn {
-  background: #dc2626;
+  background: #ae2323;
   color: #fff;
 }
 
