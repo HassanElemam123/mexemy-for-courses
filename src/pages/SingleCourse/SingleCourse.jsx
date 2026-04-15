@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../../CartContext";
 import { useAuth } from "../../AuthContext.jsx";
@@ -25,6 +25,32 @@ const comingSoonIds = new Set([
   "fc3",
   "fc4",
 ]);
+
+const instructorSlugMap = {
+  "Simon & Olivia Mia": "simon-olivia-mia",
+  "Mohamed Tarek": "mohamed-tarek",
+  "Aymen singh": "aymen-singh",
+  "Mark Shown": "mark-shown",
+  "Mina Adel": "mina-adel",
+  "Yousef Samir": "yousef-samir",
+  "Karim Nabil": "karim-nabil",
+  "Alaa Mostafa": "alaa-mostafa",
+  "Nour El Din": "nour-el-din",
+  "Salem Fathy": "salem-fathy",
+  "Rahma Osama": "rahma-osama",
+  "Tamer Wael": "tamer-wael",
+  "Ahmed Adel": "ahmed-adel",
+  "Abdullah Kareem": "abdullah-kareem",
+  "Mahmoud Samy": "mahmoud-samy",
+  "Ayman Ali": "ayman-ali",
+  "Mostafa Adel": "mostafa-adel",
+  "Nada Samir": "nada-samir",
+  "Hossam Nader": "hossam-nader",
+  "Ali Fares": "ali-fares",
+  "Mariam Ashraf": "mariam-ashraf",
+  "Nourhan Adel": "nourhan-adel",
+  "Yassin Hatem": "yassin-hatem",
+};
 
 function isCourseComingSoon(course = {}) {
   const statusText = [
@@ -696,6 +722,7 @@ export default function SingleCourse() {
       defaultCourseDetails.learn,
   };
 
+  const instructorSlug = instructorSlugMap[course.instructor];
   const comingSoon = isCourseComingSoon(course);
   const canWatchCourse = !comingSoon && Boolean(course.video);
   const canAddToCart = !comingSoon;
@@ -717,7 +744,17 @@ export default function SingleCourse() {
 
             <div className={styles.metaGrid} style={{ marginBottom: "22px" }}>
               <div>
-                <strong>Instructor:</strong> {course.instructor}
+                <strong>Instructor:</strong>{" "}
+                {instructorSlug ? (
+                  <Link
+                    to={`/affiliate/instructors/${instructorSlug}`}
+                    className={styles.insName}
+                  >
+                    {course.instructor}
+                  </Link>
+                ) : (
+                  course.instructor
+                )}
               </div>
               <div>
                 <strong>Duration:</strong> {course.duration}
@@ -783,7 +820,17 @@ export default function SingleCourse() {
 
             <div className={styles.metaGrid}>
               <div>
-                <strong>Instructor:</strong> {course.instructor}
+                <strong>Instructor:</strong>{" "}
+                {instructorSlug ? (
+                  <Link
+                    to={`/affiliate/instructors/${instructorSlug}`}
+                    className={styles.insName}
+                  >
+                    {course.instructor}
+                  </Link>
+                ) : (
+                  course.instructor
+                )}
               </div>
               <div>
                 <strong>Duration:</strong> {course.duration}

@@ -52,6 +52,17 @@
   margin-bottom: 14px;
 }
 
+.insName {
+  color: #6c4cf1;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.insName:hover{
+  color: #513ca5 ;
+}
+
 .description {
   font-size: 15px;
   color: #445;
